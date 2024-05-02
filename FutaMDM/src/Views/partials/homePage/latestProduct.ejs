@@ -1,5 +1,399 @@
+<link rel="stylesheet" href="./src/Views/boxicon.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<style>
+  @font-face {
+    font-family: "SFProText", sans-serif;
+    font-weight: 300;
+    src: url(./../fonts/FontsFree-Net-SFProText-Light-1.ttf);
+  }
+
+  @font-face {
+    font-family: "SFProText", sans-serif;
+    font-weight: 600;
+    src: url(./../fonts/FontsFree-Net-SFProText-Regular-1.ttf);
+  }
+
+  @font-face {
+    font-family: "SFProText", sans-serif;
+    font-weight: 900;
+    src: url(./../fonts/FontsFree-Net-SFProText-Semibold-1.ttf);
+  }
+
+  @font-face {
+    font-family: "SFProVietsub";
+    font-weight: 100;
+    src: url(./../fonts/SF-Pro-Display-Light.otf);
+  }
+
+  @font-face {
+    font-family: "SFProVietsub";
+    font-weight: 300;
+    src: url(./../fonts/SF-Pro-Display-Regular.otf);
+  }
+
+  @font-face {
+    font-family: "SFProVietsub";
+    font-weight: 500;
+    src: url(./../fonts/SF-Pro-Display-Medium.otf);
+  }
+
+  @font-face {
+    font-family: "SFProVietsub";
+    font-weight: 600;
+    src: url(./../fonts/SF-Pro-Display-Semibold.otf);
+  }
+
+  @font-face {
+    font-family: "SFProVietsub";
+    font-weight: 700;
+    src: url(./../fonts/SF-Pro-Display-Bold.otf);
+  }
+
+  @font-face {
+    font-family: "SFProVietsub";
+    font-weight: 900;
+    src: url(./../fonts/SF-Pro-Display-Heavy.otf);
+  }
+
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    font-family: "SFProText", sans-serif;
+    font-size: 1.4rem;
+    color: #637280;
+    line-height: 1;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: unset;
+  }
+
+  input,
+  button,
+  select,
+  textarea {
+    outline: none;
+    font-family: "SFProText", sans-serif;
+    font-size: 1.4rem;
+  }
+
+  input,
+  textarea {
+    line-height: normal;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  .wrapper {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+
+  .container {
+    max-width: 970px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .popular {
+    margin-bottom: 6rem;
+  }
+
+  .popular-header-title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    text-indent: -0.05rem;
+    font-weight: 600;
+    color: #ef5222;
+    margin-bottom: 1.3rem;
+  }
+
+  .popular-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: normal;
+    padding: 0 1.5rem;
+  }
+
+  .popular-item {
+    margin-bottom: 2.5rem;
+    width: calc(50% - 1.1rem);
+    height: 8rem;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fafafa;
+    outline: 1px solid rgba(0, 97, 61, 0.2);
+    transition: transform 0.4s ease;
+    padding: auto;
+  }
+
+  .popular-item:hover {
+    z-index: 5;
+    transform: scale(1.1);
+  }
+
+  .popular-item-link {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: normal;
+  }
+
+  .popular-item-img {
+    width: 16rem;
+  }
+
+  .popular-item:nth-child(2) .popular-info-title,
+  .popular-item:nth-child(2) .popular-info-arr,
+  .popular-item:nth-child(2) .popular-info-cost span,
+  .popular-item:nth-child(3) .popular-info-title,
+  .popular-item:nth-child(3) .popular-info-arr,
+  .popular-item:nth-child(3) .popular-info-cost span,
+  .popular-item:nth-child(6) .popular-info-title,
+  .popular-item:nth-child(6) .popular-info-arr,
+  .popular-item:nth-child(6) .popular-info-cost span,
+  .popular-item:nth-child(7) .popular-info-title,
+  .popular-item:nth-child(7) .popular-info-arr,
+  .popular-item:nth-child(7) .popular-info-cost span {
+    color: #00613d;
+  }
+
+  .popular-info {
+    flex-grow: 1;
+    padding: 0rem 0rem 0 1.5rem;
+  }
+
+  .popular-info-title {
+    color: #ef5222;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: normal;
+    gap: 0.7rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .popular-info-to-go {
+    font-family: "SFProVietsub";
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 900;
+    text-align: left;
+    letter-spacing: 0.05rem;
+    text-indent: -0.05rem;
+  }
+
+  .popular-info-arr {
+    font-size: 2rem;
+  }
+
+  .popular-info-detail {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: normal;
+  }
+
+  .popular-info-distance,
+  .popular-info-timespan,
+  .popular-info-cost {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: normal;
+    gap: 0.5rem;
+  }
+
+  .popular-info-icon {
+    font-size: 1.5rem;
+  }
+
+  .popular-info-text {
+    font-size: 1.5rem;
+  }
+
+  .popular-info-cost span {
+    color: #ef5222;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    text-indent: -0.05rem;
+  }
+
+  @media screen and (max-width: 1023.8px) {
+    .popular-info {
+      padding: 0 1rem;
+    }
+
+    .popular-info-title {
+      gap: 0.2rem;
+    }
+
+    .popular-info-to-go,
+    .popular-info-arr {
+      font-size: 1.7rem;
+    }
+
+    .popular-info-detail {
+      flex-wrap: wrap;
+    }
+
+    .popular-info-distance {
+      order: 3;
+    }
+
+    .popular-info-cost {
+      order: 1;
+    }
+
+    .popular-info-icon,
+    .popular-info-text {
+      font-size: 1.4rem;
+    }
+  }
+
+  @media screen and (max-width: 767.8px) {
+    .popular-list {
+      display: block;
+    }
+
+    .popular-item {
+      width: 100%;
+    }
+
+    .popular-item:nth-child(2) .popular-info-title,
+    .popular-item:nth-child(2) .popular-info-arr,
+    .popular-item:nth-child(2) .popular-info-cost span,
+    .popular-item:nth-child(3) .popular-info-title,
+    .popular-item:nth-child(3) .popular-info-arr,
+    .popular-item:nth-child(3) .popular-info-cost span,
+    .popular-item:nth-child(6) .popular-info-title,
+    .popular-item:nth-child(6) .popular-info-arr,
+    .popular-item:nth-child(6) .popular-info-cost span,
+    .popular-item:nth-child(7) .popular-info-title,
+    .popular-item:nth-child(7) .popular-info-arr,
+    .popular-item:nth-child(7) .popular-info-cost span {
+      color: #ef5222;
+    }
+
+    .popular-item:nth-of-type(2n) .popular-info-title,
+    .popular-item:nth-of-type(2n) .popular-info-arr,
+    .popular-item:nth-of-type(2n) .popular-info-cost span {
+      color: #00613d;
+    }
+
+    .popular-info-title {
+      gap: 1rem;
+    }
+
+    .popular-info-detail {
+      justify-content: flex-end;
+      column-gap: 2rem;
+    }
+
+    .popular-info-distance {
+      order: 0;
+    }
+
+    .popular-info-cost {
+      order: 0;
+    }
+  }
+
+  @media screen and (max-width: 479.8px) {
+    .popular-info-title {
+      margin-bottom: 1rem;
+      gap: 1rem;
+    }
+
+    .popular-info-to-go,
+    .popular-info-arr {
+      font-size: 1.6rem;
+    }
+
+    .popular-info-detail {
+      justify-content: flex-end;
+      column-gap: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 434px) {
+    .popular-info-title {
+      gap: 0.5rem;
+    }
+
+    .popular-info-to-go,
+    .popular-info-arr {
+      font-size: 1.4rem;
+    }
+
+    .popular-info-detail {
+      justify-content: space-between;
+      column-gap: 2rem;
+    }
+
+    .popular-info-distance {
+      order: 3;
+    }
+
+    .popular-info-cost {
+      order: 1;
+    }
+
+    .popular-info-icon,
+    .popular-info-text {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (max-width: 377.8px) {
+    .popular-item-link {
+      height: 100%;
+    }
+
+    .popular-item-image {
+      width: 12rem;
+      height: 100%;
+    }
+  }
+</style>
+
 <ul class="thumbnails">
-  <% _10Pro.forEach(pro => { %>
+  <!-- <% _10Pro.forEach(pro => { %>
     <li class="span3">
       <div class="thumbnail">
         <a href="productdetail/<%= pro._id %>"><img src="<%= pro.thumbnail_url %>" alt="<%= pro.name %>" /></a>
@@ -17,5 +411,168 @@
         </div>
       </div>
     </li>
-   <% }); %>
+   <% }); %> -->
+  <section class="popular">
+    <ul class="popular-list">
+      <li class="popular-item">
+        <a href="#" class="popular-item-link">
+          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
+          <div class="popular-info">
+            <div class="popular-info-title">
+              <span class="popular-info-start popular-info-to-go">sài gòn</span>
+              <i class='bx bx-log-in-circle popular-info-arr'></i>
+              <span class="popular-info-dest popular-info-to-go">đà lạt</span>
+            </div>
+            <ul class="popular-info-detail">
+              <li class="popular-info-distance">
+                <i class='bx bxs-map popular-info-icon'></i>
+                <span class="popular-info-text">239km</span>
+              </li>
+              <li class="popular-info-timespan">
+                <i class='bx bxs-time-five popular-info-icon'></i>
+                <span class="popular-info-text">8h</span>
+              </li>
+              <li class="popular-info-cost">
+                <i class='bx bxs-wallet popular-info-icon'></i>
+                <span class="popular-info-text">250.000đ</span>
+              </li>
+            </ul>
+          </div>
+        </a>
+      </li>
+      <li class="popular-item">
+        <a href="#" class="popular-item-link">
+          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
+          <div class="popular-info">
+            <div class="popular-info-title">
+              <span class="popular-info-start popular-info-to-go">sài gòn</span>
+              <i class='bx bx-log-in-circle popular-info-arr'></i>
+              <span class="popular-info-dest popular-info-to-go">nha trang</span>
+            </div>
+            <ul class="popular-info-detail">
+              <li class="popular-info-distance">
+                <i class='bx bxs-map popular-info-icon'></i>
+                <span class="popular-info-text">426km</span>
+              </li>
+              <li class="popular-info-timespan">
+                <i class='bx bxs-time-five popular-info-icon'></i>
+                <span class="popular-info-text">8h</span>
+              </li>
+              <li class="popular-info-cost">
+                <i class='bx bxs-wallet popular-info-icon'></i>
+                <span class="popular-info-text">225.000đ</span>
+              </li>
+            </ul>
+          </div>
+        </a>
+      </li>
+      <li class="popular-item">
+        <a href="#" class="popular-item-link">
+          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
+          <div class="popular-info">
+            <div class="popular-info-title">
+              <span class="popular-info-start popular-info-to-go">sài gòn</span>
+              <i class='bx bx-log-in-circle popular-info-arr'></i>
+              <span class="popular-info-dest popular-info-to-go">đà nẵng</span>
+            </div>
+            <ul class="popular-info-detail">
+              <li class="popular-info-distance">
+                <i class='bx bxs-map popular-info-icon'></i>
+                <span class="popular-info-text">850km</span>
+              </li>
+              <li class="popular-info-timespan">
+                <i class='bx bxs-time-five popular-info-icon'></i>
+                <span class="popular-info-text">8h</span>
+              </li>
+              <li class="popular-info-cost">
+                <i class='bx bxs-wallet popular-info-icon'></i>
+                <span class="popular-info-text">375.000đ</span>
+              </li>
+            </ul>
+          </div>
+        </a>
+      </li>
+      <li class="popular-item">
+        <a href="#" class="popular-item-link">
+          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
+          <div class="popular-info">
+            <div class="popular-info-title">
+              <span class="popular-info-start popular-info-to-go">sài gòn</span>
+              <i class='bx bx-log-in-circle popular-info-arr'></i>
+              <span class="popular-info-dest popular-info-to-go">cần thơ</span>
+            </div>
+            <ul class="popular-info-detail">
+              <li class="popular-info-distance">
+                <i class='bx bxs-map popular-info-icon'></i>
+                <span class="popular-info-text">166km</span>
+              </li>
+              <li class="popular-info-timespan">
+                <i class='bx bxs-time-five popular-info-icon'></i>
+                <span class="popular-info-text">8h</span>
+              </li>
+              <li class="popular-info-cost">
+                <i class='bx bxs-wallet popular-info-icon'></i>
+                <span class="popular-info-text">145.000đ</span>
+              </li>
+            </ul>
+          </div>
+        </a>
+      </li>
+      <li class="popular-item">
+        <a href="#" class="popular-item-link">
+          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
+          <div class="popular-info">
+            <div class="popular-info-title">
+              <span class="popular-info-start popular-info-to-go">đà nẵng</span>
+              <i class='bx bx-log-in-circle popular-info-arr'></i>
+              <span class="popular-info-dest popular-info-to-go">hà nội</span>
+            </div>
+            <ul class="popular-info-detail">
+              <li class="popular-info-distance">
+                <i class='bx bxs-map popular-info-icon'></i>
+                <span class="popular-info-text">766km</span>
+              </li>
+              <li class="popular-info-timespan">
+                <i class='bx bxs-time-five popular-info-icon'></i>
+                <span class="popular-info-text">18h</span>
+              </li>
+              <li class="popular-info-cost">
+                <i class='bx bxs-wallet popular-info-icon'></i>
+                <span class="popular-info-text">340.000đ</span>
+              </li>
+            </ul>
+          </div>
+        </a>
+      </li>
+      <li class="popular-item">
+        <a href="#" class="popular-item-link">
+          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
+          <div class="popular-info">
+            <div class="popular-info-title">
+              <span class="popular-info-start popular-info-to-go">sài gòn</span>
+              <i class='bx bx-log-in-circle popular-info-arr'></i>
+              <span class="popular-info-dest popular-info-to-go">hà tiên</span>
+            </div>
+            <ul class="popular-info-detail">
+              <li class="popular-info-distance">
+                <i class='bx bxs-map popular-info-icon'></i>
+                <span class="popular-info-text">315km</span>
+              </li>
+              <li class="popular-info-timespan">
+                <i class='bx bxs-time-five popular-info-icon'></i>
+                <span class="popular-info-text">8h</span>
+              </li>
+              <li class="popular-info-cost">
+                <i class='bx bxs-wallet popular-info-icon'></i>
+                <span class="popular-info-text">185.000đ</span>
+              </li>
+            </ul>
+          </div>
+        </a>
+      </li>
+
+
+    </ul>
+    </div>
+  </section>
 </ul>

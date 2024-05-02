@@ -2,8 +2,676 @@
 <html lang="en">
 
 <head>
-	<%- include('../layouts/head.ejs')%> 
+	<%- include('../layouts/head.ejs')%>
 </head>
+
+<style>
+	@font-face {
+		font-family: "SFProText", sans-serif;
+		font-weight: 300;
+		src: url(./../fonts/FontsFree-Net-SFProText-Light-1.ttf);
+	}
+
+	@font-face {
+		font-family: "SFProText", sans-serif;
+		font-weight: 600;
+		src: url(./../fonts/FontsFree-Net-SFProText-Regular-1.ttf);
+	}
+
+	@font-face {
+		font-family: "SFProText", sans-serif;
+		font-weight: 900;
+		src: url(./../fonts/FontsFree-Net-SFProText-Semibold-1.ttf);
+	}
+
+	@font-face {
+		font-family: "SFProVietsub";
+		font-weight: 100;
+		src: url(./../fonts/SF-Pro-Display-Light.otf);
+	}
+
+	@font-face {
+		font-family: "SFProVietsub";
+		font-weight: 300;
+		src: url(./../fonts/SF-Pro-Display-Regular.otf);
+	}
+
+	@font-face {
+		font-family: "SFProVietsub";
+		font-weight: 500;
+		src: url(./../fonts/SF-Pro-Display-Medium.otf);
+	}
+
+	@font-face {
+		font-family: "SFProVietsub";
+		font-weight: 600;
+		src: url(./../fonts/SF-Pro-Display-Semibold.otf);
+	}
+
+	@font-face {
+		font-family: "SFProVietsub";
+		font-weight: 700;
+		src: url(./../fonts/SF-Pro-Display-Bold.otf);
+	}
+
+	@font-face {
+		font-family: "SFProVietsub";
+		font-weight: 900;
+		src: url(./../fonts/SF-Pro-Display-Heavy.otf);
+	}
+
+	*,
+	*::before,
+	*::after {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		font-size: 62.5%;
+	}
+
+	body {
+		font-family: "SFProText", sans-serif;
+		font-size: 1.4rem;
+		color: #637280;
+		line-height: 1;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+	}
+
+	ul {
+		list-style: none;
+	}
+
+	a {
+		text-decoration: none;
+		color: unset;
+	}
+
+	input,
+	button,
+	select,
+	textarea {
+		outline: none;
+		font-family: "SFProText", sans-serif;
+		font-size: 1.4rem;
+	}
+
+	input,
+	textarea {
+		line-height: normal;
+	}
+
+	button {
+		cursor: pointer;
+	}
+
+	.wrapper {
+		max-width: 1920px;
+		margin: 0 auto;
+	}
+
+	.container {
+		max-width: 970px;
+		margin: 0 auto;
+		padding: 0 15px;
+	}
+
+
+
+
+
+
+	@media screen and (max-width: 969.8px) {
+		body {
+			padding-top: 50px;
+		}
+
+		.header {
+			height: 50px;
+			background-color: white;
+			padding: 1rem 1rem 1rem 0rem;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			align-items: center;
+			align-content: normal;
+			box-shadow: 0 0.2rem 2rem 0 rgba(0, 0, 0, 0.4);
+		}
+
+		.header-up {
+			transform: translateY(0);
+			box-shadow: 0 0.1rem 3rem 0 rgba(0, 0, 0, 0.4);
+		}
+
+		.header-logo-top,
+		.header-toggle {
+			display: block;
+		}
+
+		.header-logo {
+			width: 17.5rem;
+			height: 3.5rem;
+		}
+
+		.header-side-menu {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			width: 20rem;
+			overflow-y: overlay;
+			background-color: white;
+			z-index: 99;
+			padding: 1rem 0;
+			transform: translateX(-100%);
+			transition: all 0.5s ease;
+		}
+
+		.header-side-menu::-webkit-scrollbar {
+			width: 0.5rem;
+		}
+
+		.header-side-menu::-webkit-scrollbar-track {
+			background-color: rgba(220, 225, 230, 0.8);
+		}
+
+		.header-side-menu::-webkit-scrollbar-thumb {
+			background-color: #ef5222;
+			border-radius: 2rem;
+		}
+
+		.header-top,
+		.header-wrapper,
+		.header-bottom,
+		.header-contact,
+		.header-nav {
+			display: block;
+		}
+
+		.header-top {
+			background-image: unset;
+			height: auto;
+			padding: 0;
+		}
+
+		.header-top .header-logo-side {
+			display: block;
+			margin-bottom: 2.5rem;
+			width: 18.8rem;
+			height: 4.2rem;
+			margin-left: -1rem;
+		}
+
+		.header-contact {
+			display: none;
+		}
+
+		.header-control {
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 2rem 1rem;
+		}
+
+		.header-social,
+		.header-language-list {
+			display: inline-flex;
+			gap: 1rem;
+			flex-shrink: 0;
+		}
+
+		.header-language-text {
+			display: none;
+		}
+
+		.header-login {
+			margin-bottom: 1rem;
+		}
+
+		.header-bottom .header-logo-inner {
+			display: none;
+		}
+
+		.header-bottom-img {
+			display: none;
+		}
+
+		.header-nav-link {
+			font-weight: 300;
+			text-transform: capitalize;
+			font-size: 1.6rem;
+			text-align: left;
+			padding: 1.5rem 1.5rem;
+			margin: 0 -1.5rem;
+			width: calc(100% + 3rem);
+			border-bottom: 1px solid #dce1e6;
+		}
+
+		.header-nav-link:hover {
+			background: linear-gradient(to right, white, rgba(239, 82, 34, 0.4));
+			text-decoration: underline;
+		}
+	}
+
+	.hero {
+		position: relative;
+	}
+
+	.hero-swipe-slide {
+		height: 38rem;
+		background-image: url(./../images/home-header-hero.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+	}
+
+	@media screen and (max-width: 969.8px) {
+		.hero-swipe-slide {
+			height: 25rem;
+		}
+	}
+
+	@media screen and (max-width: 767.8px) {
+		.hero-swipe-slide {
+			height: 20rem;
+		}
+	}
+
+	@media screen and (max-width: 599.8px) {
+		.hero-swipe-slide {
+			height: 18rem;
+		}
+	}
+
+	@media screen and (max-width: 499.8px) {
+		.hero-swipe-slide {
+			height: 15rem;
+		}
+	}
+
+	.booking {
+		padding: 4rem 0;
+	}
+
+	.booking-form {
+		position: relative;
+		background-color: white;
+		padding: 2.5rem 2.5rem 4.5rem;
+		box-shadow: 4px 4px 20px 1px hsla(0, 0%, 55%, 0.4);
+		border-radius: 1.6rem;
+	}
+
+	.booking-options {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-items: center;
+		align-content: normal;
+		gap: 2.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.booking-options-one-way,
+	.booking-options-two-way {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-items: center;
+		align-content: normal;
+		gap: 0.6rem;
+	}
+
+	.booking-options-one-way label,
+	.booking-options-two-way label {
+		font-size: 1.4rem;
+		color: #333333;
+		font-weight: 600;
+		text-align: left;
+		letter-spacing: 0.05rem;
+		text-indent: -0.05rem;
+		cursor: pointer;
+	}
+
+	.booking-options-one-way input[type=radio],
+	.booking-options-two-way input[type=radio] {
+		display: inline-block;
+		width: 2rem;
+		height: 2rem;
+		appearance: none;
+		cursor: pointer;
+		position: relative;
+		background-color: white;
+		border: 0.1rem solid #ef5222;
+		border-radius: 50%;
+		overflow: hidden;
+		margin-top: -0.5rem;
+	}
+
+	.booking-options-one-way input[type=radio]:checked::after,
+	.booking-options-two-way input[type=radio]:checked::after {
+		display: inline-block;
+		content: "";
+		width: 1rem;
+		height: 1rem;
+		background-color: #ef5222;
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		box-shadow: 0 0 0rem 0rem rgba(239, 82, 34, 0.5);
+		visibility: visible;
+		transition: all 0.1s ease;
+	}
+
+	.booking-options-one-way input[type=radio]:not(:checked)::after,
+	.booking-options-two-way input[type=radio]:not(:checked)::after {
+		display: inline-block;
+		content: "";
+		width: 1rem;
+		height: 1rem;
+		background-color: #ef5222;
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		box-shadow: 0 0 0.1rem 0.5rem rgba(239, 82, 34, 0.5);
+		visibility: hidden;
+		transition: all 0.1s ease;
+	}
+
+	.booking-infor {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		align-content: normal;
+	}
+
+	.booking-route {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		align-items: stretch;
+		align-content: normal;
+		width: 39.8rem;
+		height: 8.4rem;
+	}
+
+	.booking-route-swap {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 4rem;
+		height: 4rem;
+		cursor: pointer;
+		border-radius: 50%;
+	}
+
+	.booking-route-swap-img {
+		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
+
+	.booking-route-swap-img:hover {
+		transform: rotate(180deg);
+	}
+
+	.booking-route-item {
+		width: calc(50% - 1rem);
+		padding: 1.3rem 1.7rem 0;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-items: center;
+		align-content: normal;
+		border: 1px solid #dce1e6;
+		border-radius: 0.6rem;
+	}
+
+	.booking-route-item label {
+		font-size: 1.4rem;
+		color: #637280;
+		letter-spacing: 0.05rem;
+		text-indent: -0.05rem;
+		font-weight: 600;
+		text-align: center;
+		line-height: 1;
+		margin-bottom: 0.2rem;
+		cursor: pointer;
+		width: 100%;
+	}
+
+	.booking-route-item input {
+		display: inline-block;
+		max-width: 19rem;
+		padding: 0.7rem 1rem;
+		font-size: 2rem;
+		color: #141414;
+		letter-spacing: 0.05rem;
+		text-indent: -0.05rem;
+		font-weight: 600;
+		text-align: center;
+		line-height: 1;
+		border: none;
+	}
+
+	.booking-route-item input::placeholder {
+		font-size: 1.4rem;
+		font-weight: 300;
+		color: #637280;
+	}
+
+	.booking-date {
+		width: 40rem;
+		height: 8.4rem;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+		align-content: normal;
+		border: 1px solid #dce1e6;
+		border-radius: 0.6rem;
+		padding: 1.2rem 3rem;
+	}
+
+	.booking-date-item {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-items: center;
+		align-content: normal;
+	}
+
+	.booking-date-item:first-child {
+		border-right: 1px solid #dce1e6;
+		padding-right: 0.5rem;
+	}
+
+	.booking-date-item:last-child {
+		padding-left: 0.5rem;
+	}
+
+	.booking-date-item label {
+		width: 100%;
+		margin-bottom: 0.7rem;
+		font-size: 1.4rem;
+		font-weight: 300;
+		text-align: center;
+		letter-spacing: 0.05rem;
+		text-indent: -0.05rem;
+		cursor: pointer;
+	}
+
+	.booking-date-item input {
+		display: inline-block;
+		padding: 0.7rem 1rem;
+		font-size: 1.4rem;
+		border: 1px solid rgba(204, 204, 204, 0.8);
+		border-radius: 0.5rem;
+		max-width: 16.5rem;
+	}
+
+	.booking-submit {
+		border: none;
+		padding: 1.3rem 1.4rem;
+		color: white;
+		background-color: #ef5222;
+		border-radius: 0.8rem;
+		box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+		align-content: normal;
+		position: absolute;
+		bottom: 0;
+		right: 4rem;
+		transform: translateY(45%);
+	}
+
+	.booking-submit-icon {
+		font-size: 1.6rem;
+		margin-right: 0.2rem;
+		transform: translateY(-0.1rem);
+	}
+
+	.booking-submit-text {
+		text-transform: uppercase;
+		font-size: 1.6rem;
+		font-weight: 300;
+		letter-spacing: 0.05rem;
+		text-indent: -0.05rem;
+	}
+
+	@media screen and (max-width: 969.8px) {
+		.booking {
+			padding: 2rem 0;
+		}
+
+		.booking-route {
+			width: 100%;
+		}
+
+		.booking-route input {
+			max-width: 100%;
+			width: 100%;
+		}
+
+		.booking-date {
+			margin-top: 2rem;
+			width: 100%;
+			justify-content: space-between;
+			padding: 0;
+			position: relative;
+		}
+
+		.booking-date::after {
+			content: "";
+			display: inline-block;
+			width: 0.5px;
+			height: calc(100% - 2rem);
+			background-color: #dce1e6;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.booking-date-item:first-child {
+			border-right: none;
+		}
+
+		.booking-date-item:not(:nth-child(999)) {
+			padding: 1.3rem;
+			width: calc(50% - 1rem);
+		}
+
+		.booking-date-item:not(:nth-child(999)) input {
+			max-width: 100%;
+			width: 100%;
+		}
+
+		.booking-submit {
+			position: unset;
+			margin: 0 auto;
+		}
+	}
+
+	@media screen and (max-width: 477.8px) {
+
+		.booking-route,
+		.booking-date {
+			height: auto;
+		}
+
+		.booking-route-item:not(:nth-child(999)),
+		.booking-date-item:not(:nth-child(999)) {
+			width: 100%;
+			height: 8.4rem;
+		}
+
+		.booking-route {
+			flex-wrap: wrap;
+			gap: 2rem;
+		}
+
+		.booking-route-swap-img {
+			transform: rotate(90deg);
+		}
+
+		.booking-route-swap-img:hover {
+			transform: rotate(270deg);
+		}
+
+		.booking-route-item input {
+			font-size: 1.8rem;
+		}
+
+		.booking-route-item label {
+			margin-top: 0.5rem;
+		}
+
+		.booking-date {
+			flex-wrap: wrap;
+			gap: 2rem;
+		}
+
+		.booking-date::after {
+			width: 100%;
+			height: 1px;
+		}
+
+		.booking-submit {
+			padding: 1.2rem;
+		}
+
+		.booking-submit-icon {
+			font-size: 1.4rem;
+		}
+
+		.booking-submit-text {
+			font-size: 1.4rem;
+		}
+	}
+</style>
 
 <body>
 
@@ -11,44 +679,145 @@
 	<%- include('../layouts/header.ejs',{userid}); %>
 		<!--  ===================================Header END=================================== -->
 
-	<%- include('../partials/homePage/carouseBlk.ejs') %> 
-		<div id="mainBody">
-			<div class="container">
-				<div class="row">
-					<!-- Sidebar ================================================== -->
-					<%- include('../layouts/sideBar.ejs') %> 
-					<!-- Sidebar end=============================================== -->
-					<div class="span9">
-						<div class="well well-small">
-							<h4>Featured Products <small class="pull-right">200+ featured products</small></h4>
-							<div class="row-fluid">
-								<div id="featured" class="carousel slide">
-									<div class="carousel-inner">
-										<%- include('../partials/homePage/featuredProducts.ejs',{_4proPerLine: _4proPerLine}); %>
-									</div>
-									<a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
-									<a class="right carousel-control" href="#featured" data-slide="next">›</a>
+		<%- include('../partials/homePage/carouseBlk.ejs') %>
+			<div id="mainBody">
+				<div class="container" style="display: flex; justify-content: center;">
+					<div class="row"style="display: flex; justify-content: center;">
+						<div class="span9">
+							<section class="booking">
+								
+									<div class="booking-box">
+										<form class="booking-form main-form">
+											<div class="booking-options">
+												<div class="form-group booking-form-group booking-options-one-way">
+													<input type="radio" name="type-of-way" id="options-one-way"
+														checked></input>
+													<label for="options-one-way">Một chiều</label>
+												</div>
+												<div class="form-group booking-form-group booking-options-two-way">
+													<input type="radio" name="type-of-way" id="options-two-way"></input>
+													<label for="options-two-way">Khứ hồi</label>
+												</div>
+											</div>
+											<div class="booking-infor">
+												<div class="booking-route">
+													<div class="booking-route-swap"><img
+															src="./images/home-booking-swap.png" alt=""
+															class="booking-route-swap-img">
+													</div>
+													<div
+														class="form-group booking-form-group booking-route-item booking-route-departure">
+														<label for="route-departure">Điểm đi</label>
+														<input type="text" id="route-departure"
+															placeholder="Chọn điểm đi">
+													</div>
+													<div
+														class="form-group booking-form-group booking-route-item booking-route-destination">
+														<label for="route-destination">Điểm đến</label>
+														<input type="text" id="route-destination"
+															placeholder="Chọn điểm đến">
+													</div>
+												</div>
+												<div class="booking-date">
+													<div
+														class="form-group booking-form-group booking-date-item booking-date-departure">
+														<label for="date-departure">Ngày đi</label>
+														<input type="date" name="" id="date-departure">
+													</div>
+													<div
+														class="form-group booking-form-group booking-date-item booking-date-destination">
+														<label for="date-destination">Ngày về</label>
+														<input type="date" name="" id="date-destination" disabled>
+													</div>
+												</div>
+											</div>
+											<button class="booking-submit form-submit-button" type="submit">
+												<i class="fa-solid fa-magnifying-glass booking-submit-icon"></i>
+												<span class="booking-submit-text">tìm chuyến xe</span>
+											</button>
+										</form>
+									
 								</div>
-							</div>
+							</section>
+							<h4 style="text-align: center; color: #00613d; font-size:x-large; padding-bottom: 1rem;">TUYẾN PHỔ BIẾN</h4>
+							<%- include('../partials/homePage/latestProduct.ejs',{_10Pro: _10Pro}); %>
 						</div>
-						<h4>Best Rating</h4>
-						<%- include('../partials/homePage/latestProduct.ejs',{_10Pro: _10Pro}); %>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- Footer ================================================================== -->
-		<%- include('../layouts/footer.ejs') %> 
-		<!-- Placed at the end of the document so the pages load faster ============================================= -->
-		<script src="themes/js/jquery.js" type="text/javascript"></script>
-		<script src="themes/js/bootstrap.min.js" type="text/javascript"></script>
-		<script src="themes/js/google-code-prettify/prettify.js"></script>
+			<!-- Footer ================================================================== -->
+			<%- include('../layouts/footer.ejs') %>
+				<!-- Placed at the end of the document so the pages load faster ============================================= -->
+				<script src="themes/js/jquery.js" type="text/javascript"></script>
+				<script src="themes/js/bootstrap.min.js" type="text/javascript"></script>
+				<script src="themes/js/google-code-prettify/prettify.js"></script>
 
-		<script src="themes/js/bootshop.js"></script>
-		<script src="themes/js/jquery.lightbox-0.5.js"></script>
+				<script src="themes/js/bootshop.js"></script>
+				<script src="themes/js/jquery.lightbox-0.5.js"></script>
 
-		<!-- Themes switcher section ============================================================================================= -->
-		<%- include('../partials/homePage/themsSwitch.ejs') %> 
+				<!-- Themes switcher section ============================================================================================= -->
+				<%- include('../partials/homePage/themsSwitch.ejs') %>
 </body>
+<script>
+	// Get Date and Disable Past
+let dateInput = [...document.querySelectorAll('.booking-date-item input[type="date"]')];
+let findCurrentDate = (input) => {
+    const toDay = new Date();
+    let currentDay = toDay.getDate();
+    let currentMonth = toDay.getMonth() + 1;
+    let currentYear = toDay.getFullYear();
+
+    if (currentMonth < 10) {
+        currentMonth = '0' + currentMonth.toString();
+    }
+    if (currentDay < 10) {
+        currentDay = '0' + currentDay.toString();
+    }
+
+    let currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
+
+    input.value = currentDate;
+    input.setAttribute('min', currentDate);
+}
+
+dateInput.forEach(current => {
+    findCurrentDate(current);
+});
+
+// Swap route 
+let routeSwap = (departure, destination) => {
+    let departureValue = departure.value;
+    let destinationValue = destination.value;
+
+    departure.value = destinationValue;
+    destination.value = departureValue;
+}
+
+document.querySelector('.booking-route-swap').onclick = () => {
+    let departure = document.querySelector('#route-departure');
+    let destination = document.querySelector('#route-destination');
+    routeSwap(departure, destination);
+};
+
+// Options way to go, disable input 
+let wayRadio = [...document.querySelectorAll('.booking-options input[type="radio"]')];
+let isTwoWayChecked = (wayRadio) => {
+    let twoWay = wayRadio.find(current => {
+        return current.id == 'options-two-way';
+    })
+    return twoWay.checked;
+}
+
+let disableDate = (isTwoWayChecked, radio) => {
+    isTwoWayChecked(radio) ? dateInput[1].disabled = false : dateInput[1].disabled = true;
+    console.log(dateInput.disable);
+}
+
+wayRadio.forEach(current => {
+    current.onclick = () => {
+        disableDate(isTwoWayChecked, wayRadio);
+    }
+});
+</script>
 
 </html>
