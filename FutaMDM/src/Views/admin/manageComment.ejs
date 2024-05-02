@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./layouts/index.ejs') %>
+</head>
+<body>
+    <div class="wrapper">
+        <%- include('./layouts/header.ejs') %>
+
+        <%- include('./layouts/sidebar.ejs') %>
+
+        <div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+                                    <div class="card-title">Manage Comment</div>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table id="basic-datatables" class="display table table-striped table-hover" >
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>ProductId</th>
+													<th class="custom-display">Title</th>
+													<th class="custom-display">Content</th>
+													<th>Rating</th>
+                                                    <th>Created_at</th>
+													<th>Status</th>
+                                                    <th>Manage</th>
+												</tr>
+											</thead>
+											<tfoot>
+												<tr>
+													<th>ID</th>
+													<th>ProductId</th>
+													<th class="custom-display">Title</th>
+													<th class="custom-display">Content</th>
+													<th>Rating</th>
+                                                    <th>Created_at</th>
+													<th>Status</th>
+                                                    <th>Manage</th>
+												</tr>
+											</tfoot>
+											<tbody>
+
+                                                <% allComment.forEach((comment) => { %>
+                                                    <tr class="dataComment">
+                                                        <td><%= comment.id %></td>
+                                                        <td><%= comment.productID %></td>
+                                                        <td class="custom-display"><%= comment.title %></td>
+                                                        <td class="custom-display"><%= comment.content %></td>
+                                                        <td><%= comment.rating %></td>
+                                                        <td><%= comment.create_at %></td>
+                                                        <td><%= comment.status %></td>
+                                                        <td>
+                                                            <a href="#infoComment" class="btnInfo" data-toggle="modal"><i class="material-icons" title="Detail">info</i></a>                          
+                                                            <a href="#lockComment" class="btnLock" data-toggle="modal"><i class="material-icons" title="Lock">lock</i></a>
+                                                            <a href="#deleteComment" class="btnDelete" data-toggle="modal"><i class="material-icons" title="Delete">&#xE872;</i></a>
+                                                        </td>
+                                                    </tr>
+                                                <% }) %>
+                                                    
+                                                
+												
+												
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+			
+		</div>
+    </div>
+
+
+<!-- Edit Modal HTML -->
+<div id="infoComment" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+            <div class="modal-header">						
+                <h4 class="modal-title">Comment Detail</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="text" id="id" name="id" class="form-control">
+                </div>					
+                <div class="form-group">
+                    <label for="rating" >Rating</label>
+                    <input type="text" id="rating" name="rating" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <textarea class="form-control" id="title" name="title" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea class="form-control" id="content" name="content" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="create_by">Create by</label>
+                    <input type="text" id="create_by" name="create_by" class="form-control">
+                </div>				
+                <div class="form-group">
+                    <label for="create_at">Create at</label>
+                    <input type="text" id="create_at" name="create_at" class="form-control">
+                </div>		
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <input type="text" id="status" name="status" class="form-control">
+                </div>		
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+            </div>
+		</div>
+	</div>
+</div>
+
+<!-- Lock Modal HTML -->
+<div id="lockComment" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+            <div class="modal-header">						
+                <h4 class="modal-title">Lock/Unlock Comment</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">					
+                <p id="infoLock"></p> 
+                <p class="text-warning"><small>This action cannot be undone.</small></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <button class="btn btn-success" id="btnLock">Lock/Unlock</button>
+            </div>
+		</div>
+	</div>
+</div>
+
+<!-- Delete Modal HTML -->
+<div id="deleteComment" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+            <div class="modal-header">						
+                <h4 class="modal-title">Delete Comment</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">					
+                <p id="infoDelete"></p> 
+                <p class="text-warning"><small>This action cannot be undone.</small></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <button class="btn btn-danger" id="btnDelete">Delete</button>
+            </div>
+		</div>
+	</div>
+</div>
+
+
+    <%- include('./layouts/footer.ejs') %>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            $(document).on("click", ".dataComment", function(){		
+                var commentId = $(this).find("td").eq(0).html(); 
+                $.ajax({
+                    url: `/comment/${commentId}`,
+                    type: 'GET',
+                }).done(function (data) {
+                    
+                    $('#id').val(data.id);
+                    $('#rating').val(data.rating.low);
+                    $('#title').val(data.title);
+                    $('#content').val(data.content);
+                    $('#create_by').val(data.createby);
+                    $('#create_at').val(data.create_at.low);
+                    $('#status').val(data.status);
+
+                    $('#infoDelete').html(`Are you sure you want to delete comment <b style="color: red"> ${data.id} </b>?`)
+                    $('#infoLock').html(`Are you sure you want to lock/unlock comment <b style="color: red"> ${data.id} </b>?`)
+
+                })
+
+                $('#btnLock').on('click', function() {
+                    $.ajax({
+                        url: '/admin/lockcomment',
+                        type: 'PATCH',
+                        data: {
+                            id: commentId,
+                            status: $('#status').val() === "approved" ? "lock" : "approved"
+                        }
+                    })
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Update successfully!',
+                        showConfirmButton: false,
+                        timer: 1500
+                        })
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                })
+
+                $('#btnDelete').on('click', function() {
+                    $.ajax({
+                        url: `/admin/deletecomment/${commentId}`,
+                        type: 'DELETE'
+                    })
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Delete successfully!',
+                        showConfirmButton: false,
+                        timer: 1500
+                        })
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                })
+            });
+
+        });
+    </script>
+    <script>
+        $('.tab-manage-comment').addClass('active');
+    </script>
+</body>
+</html>

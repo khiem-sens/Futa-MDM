@@ -1,0 +1,18 @@
+<% if(checkCommentExists == false && userid != null){ %>
+<h4 style="font-size: 24px;margin-top: 30px;margin-bottom: 18px;">LEAVE YOUR COMMENT</h4>
+<div class="span12">
+    <form>
+       <div class="row" style="display: inline-flex;">
+           <input id="ip_title" type="text" placeholder="Title" required>
+           <div style="padding-left: 50px;padding-right: 6px;
+           font-size: 18px;
+           font-weight: 500;
+           color: #FDD835;">Rating star</div>
+           <input id="ip_rating" type="number" min="1"  max="5" class="span1" placeholder="Số lượng" value="1">
+    </div> 
+        <textarea id="ip_content" style="min-width: 70rem;min-height: 7rem;margin-left: -31px;"></textarea>
+        <button onclick="handleCommentSubmit(`<%= proInfo.id%>`)" class="btn btn-large btn-info" style="margin-left: -31px;">Submit</button>
+    </form>
+</div>
+<script src="javascript/handleCommentSubmit.js" ></script>
+<% }%>

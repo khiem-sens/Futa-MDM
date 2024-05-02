@@ -1,0 +1,91 @@
+.btnEdit {
+    color: #5bc0de;
+}
+
+.btnDelete {
+    color: #dc3545;
+}
+
+
+.btnInfo {
+    color: #17a2b8;
+}
+
+
+.btnLock {
+    color: #27c981;
+}
+
+.btnEdit:hover, .btnDelete:hover, .btnInfo:hover, .btnLock:hover {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+
+
+.modal-title {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.modal-body .form-group label {
+    font-size: 16px !important;
+}
+
+.form-control {
+    padding: .5rem 1rem;
+}
+
+.form-group.invalid input {
+    border-color: red;
+    margin-top: 8px;
+}
+
+.form-group.invalid .form-message {
+    color: red;
+}
+
+.form-message{
+    font-size: .9rem;
+    margin-left: 8px;
+    font-style: italic;
+}
+
+.message-clone{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.error {
+    color: red;
+    font-size: .9rem;
+    margin-left: 8px;
+    padding-top: 10px;
+    font-style: italic;
+    display: block;
+}
+
+.card-title {
+    font-size: 25px !important;
+    font-weight: 600;
+}
+
+.table-header {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addUser {
+    font-size: 15px;
+}
+
+.custom-display {
+    display: inline-block;
+    white-space: nowrap;
+    width: 400px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+

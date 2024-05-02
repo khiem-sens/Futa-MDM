@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../layouts/head.ejs') %>
+</head>
+
+<body>
+	<%- include('../layouts/header.ejs',{userid}) %>
+		<!-- Header End====================================================================== -->
+		<div id="mainBody">
+			<div class="container">
+				<div class="row">
+					<!-- Sidebar ================================================== -->
+					<%- include('../layouts/sideBar.ejs') %>
+						<!-- Sidebar end=============================================== -->
+						<div class="span9">
+							<ul class="breadcrumb">
+								<li>Home <span class="divider">/</span></li>
+								<li>Products <span class="divider">/</span></li>
+								<li class="active"><a href="/">
+										<%= proInfo.name %>
+									</a></li>
+							</ul>
+							<%- include('../partials/proDetailPage/productInfo.ejs',{proInfo, price, comments,cmtImages,cmtCustomers,sellers }) %>
+						</div>
+				</div>
+				<%- include('../partials/proDetailPage/comments.ejs',{proInfo, price, comments,cmtImages,cmtCustomers,sellers,userid }) %>
+				<%- include('../partials/proDetailPage/myComment.ejs',{proInfo, checkCommentExists,userid}) %>
+
+			</div>
+		</div>
+		<!-- MainBody End ============================= -->
+		<!-- Footer ================================================================== -->
+		<%- include('../layouts/footer.ejs') %>
+			<!-- Placed at the end of the document so the pages load faster ============================================= -->
+			<script src="themes/js/jquery.js" type="text/javascript"></script>
+			<script src="themes/js/bootstrap.min.js" type="text/javascript"></script>
+			<script src="themes/js/google-code-prettify/prettify.js"></script>
+
+			<script src="themes/js/bootshop.js"></script>
+			<script src="themes/js/jquery.lightbox-0.5.js"></script>
+</body>
+
+</html>

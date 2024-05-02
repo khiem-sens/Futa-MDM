@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./layouts/index.ejs') %>
+</head>
+<body>
+    <div class="wrapper">
+        <%- include('./layouts/header.ejs') %>
+
+        <%- include('./layouts/sidebar.ejs') %>
+
+        <div class="main-panel">
+			<div class="content">
+				<div class="page-inner">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-header">
+                                    <ul class="table-header">
+                                        <li class="card-title">Manage Product</li>
+                                        <li>
+                                            <a href="#addProduct" data-toggle="modal">
+                                                <button class="btn btn-info material-icons addUser">add_circle</button>
+                                            </a>
+                                        </li>
+                                    </ul>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table id="basic-datatables" class="display table table-striped table-hover" >
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th class="custom-display">Name</th>
+													<th class="custom-display">Description</th>
+													<th>Price</th>
+													<th>USD Price</th>
+                                                    <th>Inventory_status</th>
+													<th>Is_Visible</th>
+                                                    <th>Manage</th>
+												</tr>
+											</thead>
+											<tfoot>
+												<tr>
+													<th>ID</th>
+													<th class="custom-display">Name</th>
+													<th class="custom-display">Description</th>
+													<th>Price</th>
+													<th>USD Price</th>
+                                                    <th>Inventory_status</th>
+													<th>Is_Visible</th>
+                                                    <th>Manage</th>
+												</tr>
+											</tfoot>
+											<tbody>
+
+                                                <% allProduct.forEach((product) => { %>
+                                                    <tr class="dataProduct">
+                                                        <td><%= product._id %></td>
+                                                        <td class="custom-display"><%= product.name %></td>
+                                                        <td class="custom-display"><%= product.short_description %></td>
+                                                        <td><%= product.price %></td>
+                                                        <td><%= product.price_usd %></td>
+                                                        <td><%= product.inventory_status %></td>
+                                                        <td><%= product.is_visible %></td>
+                                                        <td>
+                                                            <a href="#editProduct" class="btnEdit" data-toggle="modal"><i class="material-icons" title="Edit">&#xE254;</i></a>
+                                                            <a href="#deleteProduct" class="btnDelete" data-toggle="modal"><i class="material-icons" title="Delete">&#xE872;</i></a>
+                                                        </td>
+                                                    </tr>
+                                                <% }) %>
+                                                    
+                                                
+												
+												
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+			
+		</div>
+    </div>
+
+    <!-- Add Modal HTML -->
+<div id="addProduct" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+            <div class="modal-header">						
+                <h4 class="modal-title">Add Product</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">				
+                <div class="form-group">
+                    <label for="nameAdd" >Name</label>
+                    <input type="text" id="nameAdd" name="nameAdd" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="descriptionAdd">Description</label>
+                    <input type="text" id="descriptionAdd" name="descriptionAdd" class="form-control" required>
+\                </div>	
+                <div class="form-group">
+                    <label for="priceAdd">Price</label>
+                    <input type="text" id="priceAdd" name="priceAdd" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="usdpriceAdd">USD Price</label>
+                    <input type="text" id="usdpriceAdd" name="usdpriceAdd" class="form-control" required>
+                </div>						
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <button class="btn btn-info" id="btnAddProduct">Add</button>
+            </div>
+		</div>
+	</div>
+</div>
+
+<!-- Edit Modal HTML -->
+<div id="editProduct" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+            <div class="modal-header">						
+                <h4 class="modal-title">Edit Product</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="idEdit">ID</label>
+                    <input type="text" id="idEdit" name="idEdit" class="form-control" readonly="true">
+                </div>					
+                <div class="form-group">
+                    <label for="nameEdit" >Name</label>
+                    <input type="text" id="nameEdit" name="nameEdit" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="descriptionEdit">Description</label>
+                    <textarea class="form-control" id="descriptionEdit" name="descriptionEdit" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="priceEdit">Price</label>
+                    <input type="text" id="priceEdit" name="priceEdit" class="form-control">
+                </div>	
+                <div class="form-group">
+                    <label for="usdpriceEdit">USD Price</label>
+                    <input type="text" id="usdpriceEdit" name="usdpriceEdit" class="form-control">
+                </div>		
+                <div class="form-group">
+                    <label>Inventory_status</label>
+                    <select class="form-control" name="inventory_status" id="inventory_status">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Is_visible</label>
+                    <select class="form-control" name="is_visible" id="is_visible">
+                    </select>
+                </div>				
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <button class="btn btn-info" id="btnUpdate">Update</button>
+            </div>
+		</div>
+	</div>
+</div>
+
+<!-- Delete Modal HTML -->
+<div id="deleteProduct" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+            <div class="modal-header">						
+                <h4 class="modal-title">Delete Product</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">					
+                <p id="infoDelete">Are you sure you want to delete these Product?</p> 
+                <p class="text-warning"><small>This action cannot be undone.</small></p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <button class="btn btn-danger" id="btnDelete">Delete</button>
+            </div>
+		</div>
+	</div>
+</div>
+
+
+    <%- include('./layouts/footer.ejs') %>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            $(document).on("click", ".dataProduct", function(){		
+                var idPro = $(this).find("td").eq(0).html(); 
+                $.ajax({
+                    url: `/productdetail/getproduct/${idPro}`,
+                    type: 'GET',
+                }).done(function (data) {
+                    $('#idEdit').val(data._id);
+                    $('#nameEdit').val(data.name);
+                    $('#descriptionEdit').val(data.short_description);
+                    $('#priceEdit').val(data.price);
+                    $('#usdpriceEdit').val(data.price_usd);
+                    $('#inventory_status').val(data.inventory_status);
+                    $('#is_visible').val(data.is_visible);
+                    if (data.inventory_status === "available") {
+                        $('#inventory_status').html("<option value=\"available\">Available</option>");
+                        $('#inventory_status').append("<option value=\"unavailable\">Unavailable</option>");
+                    } else {
+                        $('#inventory_status').html("<option value=\"unavailable\">Unavailable</option>");
+                        $('#inventory_status').append("<option value=\"available\">Available</option>");
+                    }
+                    if (data.is_visible === true) {
+                        $('#is_visible').html("<option value=\"true\">True</option>");
+                        $('#is_visible').append("<option value=\"false\">False</option>");
+                    } else {
+                        $('#is_visible').html("<option value=\"false\">False</option>");
+                        $('#is_visible').append("<option value=\"true\">True</option>");
+                    }
+
+                    $('#infoDelete').html(`Are you sure you want to delete product <b style="color: red"> ${data._id} </b>?`)
+
+                })
+
+                $('#btnUpdate').on('click', function() {
+                    const dataProduct = {
+                        _id: $('#idEdit').val(),
+                        name: $('#nameEdit').val(),
+                        short_description: $('#descriptionEdit').val(),
+                        price: $('#priceEdit').val(),
+                        price_usd: $('#usdpriceEdit').val(),
+                        inventory_status: $('#inventory_status').children("option:selected").val(),
+                        is_visible: $('#is_visible').children("option:selected").val()
+                    }
+                    Swal.fire({
+                    title: 'Bạn muốn update thông tin?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    cancelButtonColor: '#d33',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Update',
+                    cancelButtonText: 'Hủy'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                            url: '/admin/updateproduct',
+                            type: 'PATCH',
+                            data: dataProduct
+                        }).done(function(data) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Cập nhật thành công',
+                                showConfirmButton: false,
+                                timer: 1500
+                                })
+                            })
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 1000);
+                        }
+                    })
+                })
+
+                $('#btnDelete').on('click', function() {
+                    $.ajax({
+                        url: `/admin/deleteproduct/${idPro}`,
+                        type: 'DELETE'
+                    })
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Xóa thành công',
+                        showConfirmButton: false,
+                        timer: 1500
+                        })
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                })
+            });
+            $('#btnAddProduct').on('click', function() {
+                const dataToPost = {
+                    name: $('#nameAdd').val(),
+                    short_description: $('#descriptionAdd').val(),
+                    price: $('#priceAdd').val(),
+                    price_usd: $('#usdpriceAdd').val()
+                };
+                if (!dataToPost.name || !dataToPost.short_description || !dataToPost.price || !dataToPost.price_usd) {
+                    alert('Vui Lòng điền dầy đủ thông tin!')
+                } else {
+                    $.ajax({
+                        url: '/admin/addproduct',
+                        type: 'POST',
+                        data: dataToPost
+                    })
+                    Swal.fire({
+                            icon: 'success',
+                            title: 'Thêm thành công',
+                            showConfirmButton: false,
+                            timer: 1500
+                            })
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1000);
+
+                    }
+                })
+        });
+    </script>
+    <script>
+        $('.tab-manage-product').addClass('active');
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Order Date</th>
+            <th>Product</th>
+            <th>STATUS</th>
+            <th>TOTAL_VND</th>
+            <th>Total_USD</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% invoiceList.forEach((invoice)=>{ %>
+            <%  if(invoice.IS_ACTIVE !=0){ %>
+            <tr>
+                <td>
+                    <span class="label label-info"> <%= String(invoice.ORDER_DATE).replace('GMT+0700 (Indochina Time)','')%></span>
+                </td>
+                <td>
+                    <div>
+                        <% invoice.LISTPRODUCTID.split(',').forEach((_id)=>{ %>
+                            <script src="javascript/handleOnloadPro.ivmanage.js" _id="<%= _id %>"></script>
+                            <div id="div_<%=_id %>" style="padding-bottom: 4px;">
+                            </div>
+                            <% }) %>
+                    </div>
+                </td>
+                <td><span class="label label-info"><%= invoice.STATUS %></span></td>
+                <td style="font-weight: 600;
+                color: orangered;
+                font-size: 14px;"><%= moneyConvert(String(invoice.TOTAL_VND)) %></td>
+                <td><%= invoice.TOTAL_USD %></td>
+                <td><button onClick="handleCancleOrder(`<%= invoice.ID %>`)" class="btn btn-danger">Cancle </button></td>
+            </tr>
+            <% }})%>
+    </tbody>
+</table>
+
+<script src="javascript/handleCancleOrder.js"></script>

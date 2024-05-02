@@ -1,0 +1,52 @@
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price(VND)</th>
+            <th>Price(USD)</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody> 
+        <% let total_vnd = 0, total_usd = 0; %> 
+        <% cartInfo.forEach((product)=>{ %>
+            <tr>
+                <td> <img width="60" src="<%= product.thumbnail_url %>" alt="<%= product.product_name %>" /></td>
+                <td>
+                    <%= product.product_name %>
+                </td>
+                <td>
+                    <div class="input-append">
+                        <input class="span1" style="max-width:34px" value="<%= product.quantity %>" id="<%= product.product_objID %>" size="16" type="text" min="0" disabled>
+                            <button class="btn" type="button" onClick="handleMinus(`<%= product.product_objID %>`)" ><i class="icon-minus"></i></button>
+                            <button class="btn" type="button" onClick="handlePlus(`<%= product.product_objID %>`)"><i class="icon-plus"></i></button>
+                            <button class="btn btn-danger" type="button" onClick="handleRemove(`<%= product.product_objID %>`)"><i class="icon-remove icon-white"></i></button>
+                    </div>
+                </td>
+                <td id="price<%= product.product_objID %>">
+                    <%=  moneyConvert(String(product.price)) %>
+                </td>
+                <td>
+                    $<%= product.price_usd %>
+                </td>
+                <td id="total<%= product.product_objID %>"><%= moneyConvert(String(product.total_price_vnd)) %></td>
+            </tr>
+            <% total_vnd +=  product.total_price_vnd; total_usd += product.total_price_usd%> 
+            <% }) %>
+
+                <tr>
+                    <td colspan="5" style="text-align:right">Total Price(VND): </td>
+                    <td class="label label-important" style="display:block"> <%= moneyConvert(String(total_vnd))  %></td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="text-align:right" >Total Price(USD): </td>
+                    <td class="label label-important" style="display:block"> $<%= total_usd.toFixed(2) %></td>
+                </tr>
+    </tbody>
+</table>
+<script src="/javascript/handlePlus.cart.js"></script>
+<script src="/javascript/handleMinus.cart.js"></script>
+<script src="/javascript/handleRemove.cart.js"></script>

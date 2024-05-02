@@ -1,0 +1,21 @@
+<ul class="thumbnails">
+  <% _10Pro.forEach(pro => { %>
+    <li class="span3">
+      <div class="thumbnail">
+        <a href="productdetail/<%= pro._id %>"><img src="<%= pro.thumbnail_url %>" alt="<%= pro.name %>" /></a>
+        <div class="caption">
+          <h6><%= pro.name.substring(0,70) + '...' %> </h6>
+
+          <h4 style="text-align:center">
+            <a class="btn" href="productdetail/<%= pro._id %>" style="background: FIREBRICK;">
+              <i style="color: white ;font-style: inherit" >-<%= pro.discount_rate %>%</i>
+            </a>
+            <a class="btn btn-primary" href="#">
+              <%let price = moneyConvert(String(pro.price))%> 
+              <%= price %>đ</a>
+          </h4>
+        </div>
+      </div>
+    </li>
+   <% }); %>
+</ul>
