@@ -391,88 +391,113 @@
     }
   }
 </style>
-
-<ul class="thumbnails">
-  <!-- <% _10Pro.forEach(pro => { %>
-    <li class="span3">
-      <div class="thumbnail">
-        <a href="productdetail/<%= pro._id %>"><img src="<%= pro.thumbnail_url %>" alt="<%= pro.name %>" /></a>
-        <div class="caption">
-          <h6><%= pro.name.substring(0,70) + '...' %> </h6>
-
-          <h4 style="text-align:center">
-            <a class="btn" href="productdetail/<%= pro._id %>" style="background: FIREBRICK;">
-              <i style="color: white ;font-style: inherit" >-<%= pro.discount_rate %>%</i>
-            </a>
-            <a class="btn btn-primary" href="#">
-              <%let price = moneyConvert(String(pro.price))%> 
-              <%= price %>đ</a>
-          </h4>
-        </div>
-      </div>
-    </li>
-   <% }); %> -->
-
-
-
-
-
   <section class="popular">
     <% _10Pro.forEach(pro => { %>
     <ul class="popular-list">
+      <a href="productdetail/<%= pro._id %>">
       <li class="popular-item">
           <a href="productdetail/<%= pro._id %>" class="popular-item-link">
-          <img src="<%= pro.thumbnail_url %>" alt="" class="popular-item-image">
+          <img src="<%= pro.thumbnail %>" alt="" class="popular-item-image">
           <div class="popular-info">
             <div class="popular-info-title">
-              <span class="popular-info-start popular-info-to-go">sài gòn</span>
-              <i class='bx bx-log-in-circle popular-info-arr'></i>
-              <span class="popular-info-dest popular-info-to-go">đà lạt</span>
+              <span class="popular-info-start popular-info-to-go"><%= pro.name %></span>
             </div>
             <ul class="popular-info-detail">
               <li class="popular-info-distance">
                 <i class='bx bxs-map popular-info-icon'></i>
-                <span class="popular-info-text">239km</span>
+                <span class="popular-info-text"><%= pro.distance %> km</span>
               </li>
               <li class="popular-info-timespan">
                 <i class='bx bxs-time-five popular-info-icon'></i>
-                <span class="popular-info-text">8h</span>
+                <span class="popular-info-text"><%= pro.time %></span>
               </li>
               <li class="popular-info-cost">
                 <i class='bx bxs-wallet popular-info-icon'></i>
-                <span class="popular-info-text">250.000đ</span>
+                <span class="popular-info-text"><%= pro.price %> đ</span>
               </li>
             </ul>
           </div>
         </a>
       </li>
-            <li class="popular-item">
-        <a href="#" class="popular-item-link">
-          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
+    </a>
+    <a href="productdetail/<%= pro._id %>">
+      <li class="popular-item">
+          <a href="productdetail/<%= pro._id %>" class="popular-item-link">
+          <img src="<%= pro.thumbnail %>" alt="" class="popular-item-image">
           <div class="popular-info">
             <div class="popular-info-title">
-              <span class="popular-info-start popular-info-to-go">sài gòn</span>
-              <i class='bx bx-log-in-circle popular-info-arr'></i>
-              <span class="popular-info-dest popular-info-to-go">hà tiên</span>
+              <span class="popular-info-start popular-info-to-go"><%= pro.name %></span>
             </div>
             <ul class="popular-info-detail">
               <li class="popular-info-distance">
                 <i class='bx bxs-map popular-info-icon'></i>
-                <span class="popular-info-text">315km</span>
+                <span class="popular-info-text"><%= pro.distance %> km</span>
               </li>
               <li class="popular-info-timespan">
                 <i class='bx bxs-time-five popular-info-icon'></i>
-                <span class="popular-info-text">8h</span>
+                <span class="popular-info-text"><%= pro.time %></span>
               </li>
               <li class="popular-info-cost">
                 <i class='bx bxs-wallet popular-info-icon'></i>
-                <span class="popular-info-text">185.000đ</span>
+                <span class="popular-info-text"><%= pro.price %> đ</span>
               </li>
             </ul>
           </div>
         </a>
       </li>
-
+    </a>
+    <a href="productdetail/<%= pro._id %>">
+      <li class="popular-item">
+          <a href="productdetail/<%= pro._id %>" class="popular-item-link">
+          <img src="<%= pro.thumbnail %>" alt="" class="popular-item-image" style="width: 10%; height: 60%; object-fit: cover;">
+          <div class="popular-info">
+            <div class="popular-info-title">
+              <span class="popular-info-start popular-info-to-go" style="font-size: 18px;"><%= pro.name %></span>
+            </div>
+            <ul class="popular-info-detail">
+              <li class="popular-info-distance">
+                <i class='bx bxs-map popular-info-icon'></i>
+                <span class="popular-info-text"><%= pro.distance %> km</span>
+              </li>
+              <li class="popular-info-timespan">
+                <i class='bx bxs-time-five popular-info-icon'></i>
+                <span class="popular-info-text"><%= pro.time %></span>
+              </li>
+              <li class="popular-info-cost">
+                <i class='bx bxs-wallet popular-info-icon'></i>
+                <span class="popular-info-text"><%= pro.price %> đ</span>
+              </li>
+            </ul>
+          </div>
+        </a>
+      </li>
+    </a>
+    <a href="productdetail/<%= pro._id %>">
+      <li class="popular-item">
+          <a href="productdetail/<%= pro._id %>" class="popular-item-link">
+          <img src="<%= pro.thumbnail %>" alt="" class="popular-item-image">
+          <div class="popular-info">
+            <div class="popular-info-title">
+              <span class="popular-info-start popular-info-to-go"><%= pro.name %></span>
+            </div>
+            <ul class="popular-info-detail">
+              <li class="popular-info-distance">
+                <i class='bx bxs-map popular-info-icon'></i>
+                <span class="popular-info-text"><%= pro.distance %> km</span>
+              </li>
+              <li class="popular-info-timespan">
+                <i class='bx bxs-time-five popular-info-icon'></i>
+                <span class="popular-info-text"><%= pro.time %></span>
+              </li>
+              <li class="popular-info-cost">
+                <i class='bx bxs-wallet popular-info-icon'></i>
+                <span class="popular-info-text"><%= pro.price %> đ</span>
+              </li>
+            </ul>
+          </div>
+        </a>
+      </li>
+    </a>
 
     </ul>
     <% }); %> 

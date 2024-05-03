@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const proSchema = {
+const tripSchema = {
     id: Number,
     name: String,
     status: String,
@@ -32,7 +32,6 @@ const proSchema = {
         }]
     }]
 }
-let _productSchema = new mongoose.Schema(proSchema);
 
-
-module.exports = mongoose.model('product', _productSchema);
+let _tripSchema = new mongoose.Schema(tripSchema);
+module.exports = mongoose.model('product', _tripSchema);
