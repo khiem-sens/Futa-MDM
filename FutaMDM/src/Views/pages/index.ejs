@@ -296,7 +296,7 @@
 	}
 
 	.booking {
-		padding: 4rem 0;
+		padding: 0rem 0;
 	}
 
 	.booking-form {
@@ -305,6 +305,7 @@
 		padding: 2.5rem 2.5rem 4.5rem;
 		box-shadow: 4px 4px 20px 1px hsla(0, 0%, 55%, 0.4);
 		border-radius: 1.6rem;
+		margin-bottom: 10rem;
 	}
 
 	.booking-options {
@@ -458,9 +459,9 @@
 
 	.booking-route-item input {
 		display: inline-block;
-		max-width: 19rem;
-		padding: 0.7rem 1rem;
-		font-size: 2rem;
+		max-width: 17rem;
+		padding: 1.7rem 1rem;
+		font-size: 1.7rem;
 		color: #141414;
 		letter-spacing: 0.05rem;
 		text-indent: -0.05rem;
@@ -682,64 +683,87 @@
 		<%- include('../partials/homePage/carouseBlk.ejs') %>
 			<div id="mainBody" style="padding: 10rem 10rem;">
 				<div class="container" style="display: flex; justify-content: center;">
-					<div class="row"style="display: flex; justify-content: center;">
+					<div class="row" style="display: flex; justify-content: center;">
 						<div class="span9">
 							<section class="booking">
-								
-									<div class="booking-box">
-										<form class="booking-form main-form">
-											<div class="booking-options">
-												<div class="form-group booking-form-group booking-options-one-way">
-													<input type="radio" name="type-of-way" id="options-one-way"
-														checked></input>
-													<label for="options-one-way">Một chiều</label>
+
+								<div class="booking-box">
+									<form class="booking-form main-form">
+										<div class="booking-options">
+											<div class="form-group booking-form-group booking-options-one-way">
+												<input type="radio" name="type-of-way" id="options-one-way"
+													checked></input>
+												<label for="options-one-way">Một chiều</label>
+											</div>
+											<div class="form-group booking-form-group booking-options-two-way">
+												<input type="radio" name="type-of-way" id="options-two-way"></input>
+												<label for="options-two-way">Khứ hồi</label>
+											</div>
+										</div>
+										<div class="booking-infor">
+											<div class="booking-route">
+												<div class="booking-route-swap"><img
+														src="./images/home-booking-swap.png" alt=""
+														class="booking-route-swap-img">
 												</div>
-												<div class="form-group booking-form-group booking-options-two-way">
-													<input type="radio" name="type-of-way" id="options-two-way"></input>
-													<label for="options-two-way">Khứ hồi</label>
+												<div
+													class="form-group booking-form-group booking-route-item booking-route-departure">
+													<label for="route-departure">Điểm đi</label>
+													<input type="text" id="route-departure" placeholder="Chọn điểm đi">
+												</div>
+												<div
+													class="form-group booking-form-group booking-route-item booking-route-destination">
+													<label for="route-destination">Điểm đến</label>
+													<input type="text" id="route-destination"
+														placeholder="Chọn điểm đến">
 												</div>
 											</div>
-											<div class="booking-infor">
-												<div class="booking-route">
-													<div class="booking-route-swap"><img
-															src="./images/home-booking-swap.png" alt=""
-															class="booking-route-swap-img">
-													</div>
-													<div
-														class="form-group booking-form-group booking-route-item booking-route-departure">
-														<label for="route-departure">Điểm đi</label>
-														<input type="text" id="route-departure"
-															placeholder="Chọn điểm đi">
-													</div>
-													<div
-														class="form-group booking-form-group booking-route-item booking-route-destination">
-														<label for="route-destination">Điểm đến</label>
-														<input type="text" id="route-destination"
-															placeholder="Chọn điểm đến">
-													</div>
+											<div class="booking-date">
+												<div
+													class="form-group booking-form-group booking-date-item booking-date-departure">
+													<label for="date-departure" style="font-size: 1.4rem;
+													color: #637280;
+													letter-spacing: 0.05rem;
+													text-indent: -0.05rem;
+													font-weight: 600;
+													text-align: center;
+													line-height: 1;
+													margin-bottom: 0.2rem;
+													cursor: pointer;
+													width: 100%;
+													margin-top: -1rem;
+													margin-bottom: 1rem;">Ngày đi</label>
+													<input type="date" name="" id="date-departure">
 												</div>
-												<div class="booking-date">
-													<div
-														class="form-group booking-form-group booking-date-item booking-date-departure">
-														<label for="date-departure">Ngày đi</label>
-														<input type="date" name="" id="date-departure">
-													</div>
-													<div
-														class="form-group booking-form-group booking-date-item booking-date-destination">
-														<label for="date-destination">Ngày về</label>
-														<input type="date" name="" id="date-destination" disabled>
-													</div>
+												<div
+													class="form-group booking-form-group booking-date-item booking-date-destination">
+													<label for="date-destination" style="font-size: 1.4rem;
+													color: #637280;
+													letter-spacing: 0.05rem;
+													text-indent: -0.05rem;
+													font-weight: 600;
+													text-align: center;
+													line-height: 1;
+													margin-bottom: 0.2rem;
+													cursor: pointer;
+													width: 100%;
+													margin-top: -1rem;
+													margin-bottom: 1rem">Ngày về</label>
+													<input type="date" name="" id="date-destination" disabled>
 												</div>
 											</div>
-											<button class="booking-submit form-submit-button" type="submit">
-												<i class="fa-solid fa-magnifying-glass booking-submit-icon"></i>
-												<span class="booking-submit-text">tìm chuyến xe</span>
-											</button>
-										</form>
-									
+										</div>
+										<button class="booking-submit form-submit-button" type="submit">
+											<i class="fa-solid fa-magnifying-glass booking-submit-icon"></i>
+											<span class="booking-submit-text">tìm chuyến xe</span>
+										</button>
+									</form>
+
 								</div>
 							</section>
-							<h4 style="text-align: center; color: #00613d; font-size:x-large; padding-bottom: 1rem;">TUYẾN PHỔ BIẾN</h4>
+							<h4
+								style="text-align: center; color: #00613d; font-size:x-large; padding-bottom: 1rem; margin-bottom: 3rem;">
+								TUYẾN PHỔ BIẾN</h4>
 							<%- include('../partials/homePage/latestProduct.ejs',{_10Pro: _10Pro}); %>
 						</div>
 					</div>
@@ -760,64 +784,64 @@
 </body>
 <script>
 	// Get Date and Disable Past
-let dateInput = [...document.querySelectorAll('.booking-date-item input[type="date"]')];
-let findCurrentDate = (input) => {
-    const toDay = new Date();
-    let currentDay = toDay.getDate();
-    let currentMonth = toDay.getMonth() + 1;
-    let currentYear = toDay.getFullYear();
+	let dateInput = [...document.querySelectorAll('.booking-date-item input[type="date"]')];
+	let findCurrentDate = (input) => {
+		const toDay = new Date();
+		let currentDay = toDay.getDate();
+		let currentMonth = toDay.getMonth() + 1;
+		let currentYear = toDay.getFullYear();
 
-    if (currentMonth < 10) {
-        currentMonth = '0' + currentMonth.toString();
-    }
-    if (currentDay < 10) {
-        currentDay = '0' + currentDay.toString();
-    }
+		if (currentMonth < 10) {
+			currentMonth = '0' + currentMonth.toString();
+		}
+		if (currentDay < 10) {
+			currentDay = '0' + currentDay.toString();
+		}
 
-    let currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
+		let currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
 
-    input.value = currentDate;
-    input.setAttribute('min', currentDate);
-}
+		input.value = currentDate;
+		input.setAttribute('min', currentDate);
+	}
 
-dateInput.forEach(current => {
-    findCurrentDate(current);
-});
+	dateInput.forEach(current => {
+		findCurrentDate(current);
+	});
 
-// Swap route 
-let routeSwap = (departure, destination) => {
-    let departureValue = departure.value;
-    let destinationValue = destination.value;
+	// Swap route 
+	let routeSwap = (departure, destination) => {
+		let departureValue = departure.value;
+		let destinationValue = destination.value;
 
-    departure.value = destinationValue;
-    destination.value = departureValue;
-}
+		departure.value = destinationValue;
+		destination.value = departureValue;
+	}
 
-document.querySelector('.booking-route-swap').onclick = () => {
-    let departure = document.querySelector('#route-departure');
-    let destination = document.querySelector('#route-destination');
-    routeSwap(departure, destination);
-};
+	document.querySelector('.booking-route-swap').onclick = () => {
+		let departure = document.querySelector('#route-departure');
+		let destination = document.querySelector('#route-destination');
+		routeSwap(departure, destination);
+	};
 
-// Options way to go, disable input 
-let wayRadio = [...document.querySelectorAll('.booking-options input[type="radio"]')];
-let isTwoWayChecked = (wayRadio) => {
-    let twoWay = wayRadio.find(current => {
-        return current.id == 'options-two-way';
-    })
-    return twoWay.checked;
-}
+	// Options way to go, disable input 
+	let wayRadio = [...document.querySelectorAll('.booking-options input[type="radio"]')];
+	let isTwoWayChecked = (wayRadio) => {
+		let twoWay = wayRadio.find(current => {
+			return current.id == 'options-two-way';
+		})
+		return twoWay.checked;
+	}
 
-let disableDate = (isTwoWayChecked, radio) => {
-    isTwoWayChecked(radio) ? dateInput[1].disabled = false : dateInput[1].disabled = true;
-    console.log(dateInput.disable);
-}
+	let disableDate = (isTwoWayChecked, radio) => {
+		isTwoWayChecked(radio) ? dateInput[1].disabled = false : dateInput[1].disabled = true;
+		console.log(dateInput.disable);
+	}
 
-wayRadio.forEach(current => {
-    current.onclick = () => {
-        disableDate(isTwoWayChecked, wayRadio);
-    }
-});
+	wayRadio.forEach(current => {
+		current.onclick = () => {
+			disableDate(isTwoWayChecked, wayRadio);
+		}
+	});
 </script>
 
 </html>
