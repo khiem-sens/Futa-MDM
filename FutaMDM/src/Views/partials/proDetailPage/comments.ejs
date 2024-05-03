@@ -1,5 +1,5 @@
 <div class="row">
-    <h4 style="font-size: 24px;margin-top: 30px;margin-bottom: 18px;">COMMENTS</h4>
+    <h4 style="font-size: 24px;margin-top: 30px;margin-bottom: 18px; color: #00613d">Bình luận</h4>
 
     <% comments.forEach((comment)=>{ %>
         <div class="row" style="border-bottom-style: inset;border-width: 2px;padding-top: 8px;">
@@ -54,7 +54,7 @@
                             <% if(String(image.comID)==String(comment.id)){ %>
                                 <a href="<%= image.full_path %>">
                                     <img src="<%= image.full_path %>" alt=""
-                                        style="width: 152px;height: 152px;border-radius: 12px; padding-bottom: 9px;">
+                                        style="width: 153px;height: 152px;border-radius: 12px; padding-bottom: 9px;">
                                 </a>
                                 <% } %>
                                     <% }) %>

@@ -1,82 +1,98 @@
-<div class="row">
-    <div id="gallery" class="span3">
-        <a href="<%= proInfo.thumbnail_url %>" title="<%= proInfo.name %>">
-            <img src="<%= proInfo.thumbnail_url %>" style="width:100%"
-                alt="<%= proInfo.name %>" />
-        </a>
-        <div id="differentview" class="moreOptopm carousel slide">
-            <div class="carousel-inner">
-                <div class="item active">
-                    <a href="<%= proInfo.thumbnail_url %>"> <img style="width:29%"
-                            src="<%= proInfo.thumbnail_url %>" alt="" /></a>
+<style>
+    table.table tbody tr:first-child td {
+        border-top: none;
+    }
+    .table-container {
+        border-radius: 10px; /* Điều chỉnh độ cong của góc */
+        overflow: hidden; /* Đảm bảo nội dung không bị tràn ra ngoài phần đã cong */
+    }
+
+    .table-container table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .table-container table td,
+    .table-container table th {
+        padding: 8px;
+        border: 1px solid #ddd; /* Border của các ô */
+    }
+</style>
+
+<div class="container" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <div class="row"
+        style="border: 1px solid gainsboro; padding: 1.5rem; border-radius: 30px; box-shadow: 4px 4px 20px 1px hsla(0, 0%, 55%, 0.4)">
+        <div id="gallery" class="span3">
+            <a href="<%= proInfo.thumbnail_url %>" title="<%= proInfo.name %>">
+                <img src="<%= proInfo.thumbnail_url %>" style="width:100%" alt="<%= proInfo.name %>" />
+            </a>
+            <div id="differentview" class="moreOptopm carousel slide">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <a href="<%= proInfo.thumbnail_url %>"> <img style="width:29%"
+                                src="<%= proInfo.thumbnail_url %>" alt="" /></a>
+                    </div>
+                    <div class="item">
+                        <a href="<%= proInfo.thumbnail_url %>"> <img style="width:29%"
+                                src="<%= proInfo.thumbnail_url %>" alt="" /></a>
+                    </div>
                 </div>
-                <div class="item">
-                    <a href="<%= proInfo.thumbnail_url %>"> <img style="width:29%"
-                            src="<%= proInfo.thumbnail_url %>" alt="" /></a>
-                </div>
-            </div>
-            <!--  
+                <!--  
 <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a> 
 -->
-        </div>
+            </div>
 
-        <div class="btn-toolbar">
-            <div class="btn-group">
-                <span class="btn"><i class="icon-envelope"></i></span>
-                <span class="btn"><i class="icon-print"></i></span>
-                <span class="btn"><i class="icon-zoom-in"></i></span>
-                <span class="btn"><i class="icon-star"></i></span>
-                <span class="btn"><i class=" icon-thumbs-up"></i></span>
-                <span class="btn"><i class="icon-thumbs-down"></i></span>
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <span class="btn"><i class="icon-envelope"></i></span>
+                    <span class="btn"><i class="icon-print"></i></span>
+                    <span class="btn"><i class="icon-zoom-in"></i></span>
+                    <span class="btn"><i class="icon-star"></i></span>
+                    <span class="btn"><i class=" icon-thumbs-up"></i></span>
+                    <span class="btn"><i class="icon-thumbs-down"></i></span>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="span6">
-        <h3>
-            <%= proInfo.name %>
-        </h3>
-        <hr class="soft" />
+        <div class="span6">
+            <h3>
+                <%= proInfo.name %>
+            </h3>
+            <hr class="soft" />
 
-        <div class="row" style="padding-left: 28px;">
-            <label class="control-label"><span style="font-size: 25px;">
-                    <%= price %> VNĐ
-                </span>
-                <del style="margin-left: 9px;">
-                    <%= proInfo.list_price %>₫
-                </del>
-                <button
-                    style=" background-color: red;border: none;color: white;font-weight: 900;padding: 3px;/* text-align: center; *//* text-decoration: none; */display: inline-block;font-size: 10px;margin: 4px 2px;border-radius: 50%;">-
-                    <%= proInfo.discount_rate %>%
-                </button></label>
+            <div class="row" style="padding-left: 28px;">
+                <label class="control-label"><span style="font-size: 25px;">
+                        <%= price %> VNĐ
+                    </span>
+                    
+                    </label>
+            </div>
+            <div class="row" style="padding-top: 10px;padding-left: 23px; margin-left: 7rem;">
+                <% if(checkExistInCart==0){ %>
+                    <input  id="input_countPro" type="number" min="1" class="span1" placeholder="Số lượng" value="1" />
+                    <button onClick="handleAddToCart(`<%= proInfo._id %>`)" class="btn btn-large btn-danger"
+                        style="margin-left: 1rem;"> Chọn chuyến <i class=" icon-shopping-cart"></i></button>
+                    <% }else{ %>
+                        <button class="btn btn-large btn-info"> Đã chọn <i class=" icon-shopping-cart"></i></button>
+                        <% } %>
+                            <script src="/javascript/handleAddToCart.cart.js"></script>
+
+            </div>
         </div>
-        <div class="row" style="padding-top: 10px;padding-left: 23px;">
-            <% if(checkExistInCart == 0){ %>
-                <input id="input_countPro" type="number" min="1" class="span1" placeholder="Số lượng" value="1" />
-                <button onClick="handleAddToCart(`<%= proInfo._id %>`)"  class="btn btn-large btn-danger"
-                    style="margin-left: 27px"> Add to cart <i
-                        class=" icon-shopping-cart"></i></button>
-            <% }else{ %>
-                <button class="btn btn-large btn-info"
-                     > Added <i
-                        class=" icon-shopping-cart"></i></button>
-            <% } %>  
-            <script src="/javascript/handleAddToCart.cart.js"></script>
 
-        </div>
+
+
     </div>
-
     <div class="span9">
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active in" id="home">
-                <h4
-                    style="font-size: 24px;margin-top: 30px;margin-bottom: 18px;">
-                    Product Information</h4>
-                <table class="table">
+                <h4 style="font-size: 24px;margin-top: 30px; margin-bottom: 18px; color: #00613d">
+                    Thông tin chi tiết</h4>
+                <table class="table table-container" style="border-radius: 20px; width: 95%; box-shadow: 4px 4px 20px 1px hsla(0, 0%, 55%, 0.4)">
                     <tbody>
                         <% proInfo.specifications[0].attributes.forEach((obj)=>{ %>
                             <tr>
-                                <td style="background-color: #EFEFEF;">
+                                <td style="background-color: #ff764d; color: white; font-size: 14px">
                                     <%= obj.name %>
                                 </td>
                                 <td>
@@ -86,15 +102,12 @@
                             <% }) %>
                     </tbody>
                 </table>
-                <h4
-                    style="font-size: 24px;margin-top: 37px;margin-bottom: 18px;">
-                    Description</h4>
-                <div style="overflow: auto;height: 35rem;">
+                <h4 style="font-size: 24px;margin-top: 37px;margin-bottom: 18px; color: #00613d">
+                    Mô tả</h4>
+                <div style="overflow: auto; height: 5rem;">
                     <%- proInfo.description %>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>

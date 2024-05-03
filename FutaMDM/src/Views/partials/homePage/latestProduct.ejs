@@ -412,11 +412,17 @@
       </div>
     </li>
    <% }); %> -->
+
+
+
+
+
   <section class="popular">
+    <% _10Pro.forEach(pro => { %>
     <ul class="popular-list">
       <li class="popular-item">
-        <a href="#" class="popular-item-link">
-          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
+          <a href="productdetail/<%= pro._id %>" class="popular-item-link">
+          <img src="<%= pro.thumbnail_url %>" alt="" class="popular-item-image">
           <div class="popular-info">
             <div class="popular-info-title">
               <span class="popular-info-start popular-info-to-go">sài gòn</span>
@@ -440,111 +446,7 @@
           </div>
         </a>
       </li>
-      <li class="popular-item">
-        <a href="#" class="popular-item-link">
-          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
-          <div class="popular-info">
-            <div class="popular-info-title">
-              <span class="popular-info-start popular-info-to-go">sài gòn</span>
-              <i class='bx bx-log-in-circle popular-info-arr'></i>
-              <span class="popular-info-dest popular-info-to-go">nha trang</span>
-            </div>
-            <ul class="popular-info-detail">
-              <li class="popular-info-distance">
-                <i class='bx bxs-map popular-info-icon'></i>
-                <span class="popular-info-text">426km</span>
-              </li>
-              <li class="popular-info-timespan">
-                <i class='bx bxs-time-five popular-info-icon'></i>
-                <span class="popular-info-text">8h</span>
-              </li>
-              <li class="popular-info-cost">
-                <i class='bx bxs-wallet popular-info-icon'></i>
-                <span class="popular-info-text">225.000đ</span>
-              </li>
-            </ul>
-          </div>
-        </a>
-      </li>
-      <li class="popular-item">
-        <a href="#" class="popular-item-link">
-          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
-          <div class="popular-info">
-            <div class="popular-info-title">
-              <span class="popular-info-start popular-info-to-go">sài gòn</span>
-              <i class='bx bx-log-in-circle popular-info-arr'></i>
-              <span class="popular-info-dest popular-info-to-go">đà nẵng</span>
-            </div>
-            <ul class="popular-info-detail">
-              <li class="popular-info-distance">
-                <i class='bx bxs-map popular-info-icon'></i>
-                <span class="popular-info-text">850km</span>
-              </li>
-              <li class="popular-info-timespan">
-                <i class='bx bxs-time-five popular-info-icon'></i>
-                <span class="popular-info-text">8h</span>
-              </li>
-              <li class="popular-info-cost">
-                <i class='bx bxs-wallet popular-info-icon'></i>
-                <span class="popular-info-text">375.000đ</span>
-              </li>
-            </ul>
-          </div>
-        </a>
-      </li>
-      <li class="popular-item">
-        <a href="#" class="popular-item-link">
-          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
-          <div class="popular-info">
-            <div class="popular-info-title">
-              <span class="popular-info-start popular-info-to-go">sài gòn</span>
-              <i class='bx bx-log-in-circle popular-info-arr'></i>
-              <span class="popular-info-dest popular-info-to-go">cần thơ</span>
-            </div>
-            <ul class="popular-info-detail">
-              <li class="popular-info-distance">
-                <i class='bx bxs-map popular-info-icon'></i>
-                <span class="popular-info-text">166km</span>
-              </li>
-              <li class="popular-info-timespan">
-                <i class='bx bxs-time-five popular-info-icon'></i>
-                <span class="popular-info-text">8h</span>
-              </li>
-              <li class="popular-info-cost">
-                <i class='bx bxs-wallet popular-info-icon'></i>
-                <span class="popular-info-text">145.000đ</span>
-              </li>
-            </ul>
-          </div>
-        </a>
-      </li>
-      <li class="popular-item">
-        <a href="#" class="popular-item-link">
-          <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
-          <div class="popular-info">
-            <div class="popular-info-title">
-              <span class="popular-info-start popular-info-to-go">đà nẵng</span>
-              <i class='bx bx-log-in-circle popular-info-arr'></i>
-              <span class="popular-info-dest popular-info-to-go">hà nội</span>
-            </div>
-            <ul class="popular-info-detail">
-              <li class="popular-info-distance">
-                <i class='bx bxs-map popular-info-icon'></i>
-                <span class="popular-info-text">766km</span>
-              </li>
-              <li class="popular-info-timespan">
-                <i class='bx bxs-time-five popular-info-icon'></i>
-                <span class="popular-info-text">18h</span>
-              </li>
-              <li class="popular-info-cost">
-                <i class='bx bxs-wallet popular-info-icon'></i>
-                <span class="popular-info-text">340.000đ</span>
-              </li>
-            </ul>
-          </div>
-        </a>
-      </li>
-      <li class="popular-item">
+            <li class="popular-item">
         <a href="#" class="popular-item-link">
           <img src="./themes/images/landscape/home-route-img7.png" alt="" class="popular-item-image">
           <div class="popular-info">
@@ -573,6 +475,7 @@
 
 
     </ul>
+    <% }); %> 
     </div>
   </section>
 </ul>

@@ -1,40 +1,365 @@
-<div id="footerSection">
+<style>
+    .footer {
+  background-color: #fff7f5;
+  border-top: 0.5px solid hsla(0, 0%, 59.2%, 0.5);
+  padding: 2.5rem 0 0 0;
+}
+.footer-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: normal;
+}
+.footer-title {
+  font-family: "SFProVietsub";
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ef5222;
+  letter-spacing: 0.05rem;
+  text-indent: -0.05rem;
+  margin-bottom: 1.5rem;
+}
+.footer-info {
+  width: calc(55% - 3rem);
+}
+.footer-line {
+  width: calc(45% - 3rem);
+}
+.footer-connect {
+  width: 100%;
+}
+.footer-feature {
+  width: 100%;
+}
+.footer-info-title {
+  color: #637280;
+}
+.footer-info-local {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: normal;
+  margin-bottom: 1.5rem;
+}
+.footer-info-phone {
+  font-family: "SFProVietsub";
+  font-size: 3.6rem;
+  color: #ef5222;
+  letter-spacing: 0.05rem;
+  text-indent: -0.05rem;
+  font-weight: 900;
+}
+.footer-info-phone:hover {
+  color: rgba(239, 82, 34, 0.9);
+}
+.footer-info-sub {
+  display: block;
+  width: 12.5rem;
+  height: 4rem;
+}
+.footer-info-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.footer-info-name, .footer-info-address, .footer-info-mail {
+  letter-spacing: 0.05rem;
+  text-indent: -0.05rem;
+  margin-bottom: 1.2rem;
+}
+.footer-info-name {
+  text-transform: uppercase;
+}
+.footer-info-mail a {
+  color: #ef5222;
+}
+.footer-info-mail a:hover {
+  opacity: 0.8;
+}
+.footer-info-contact {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: normal;
+  row-gap: 0.5rem;
+  column-gap: 2rem;
+  letter-spacing: 0.05rem;
+  text-indent: -0.05rem;
+  color: #00613d;
+}
+.footer-line-title {
+  text-transform: none;
+  font-size: 1.4rem;
+}
+.footer-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: normal;
+  column-gap: 1rem;
+}
+.footer-nav-item {
+  margin-bottom: 1.8rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: normal;
+}
+.footer-nav-icon {
+  font-size: 1.7rem;
+}
+.footer-connect {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: normal;
+  column-gap: 11rem;
+}
+.footer-connect-title {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.footer-connect-link {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: normal;
+}
+.footer-connect-social {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.footer-connect-social img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.footer-connect-social:last-child {
+  margin-left: 1.5rem;
+}
+.footer-connect-app {
+  display: block;
+  padding: 0.35rem 1rem;
+  border-radius: 1.4rem;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  color: white;
+  font-size: 1.2rem;
+  letter-spacing: 0.05rem;
+  text-indent: -0.05rem;
+  background-color: #111111;
+}
+.footer-connect-app i {
+  font-size: 2rem;
+}
+.footer-connect-app:last-child {
+  margin-left: 0.8rem;
+  background-color: #4cb508;
+}
+.footer-feature {
+  margin-top: 3rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: normal;
+}
+.footer-feature-item {
+  display: block;
+  width: fit-content;
+  height: 5rem;
+}
+.footer-feature-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.footer-feature-item:first-child {
+  margin-left: -1rem;
+}
+.footer-end {
+  padding: 16px 0 24px 0;
+  font-size: 1.3rem;
+  text-align: center;
+  letter-spacing: 0.04rem;
+  text-indent: -0.04rem;
+  border-top: 1px solid #637280;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+}
+@media screen and (max-width: 767.8px) {
+  .footer-list {
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+  .footer-item {
+    width: 100%;
+  }
+  .footer-end {
+    font-size: 1.1rem;
+    padding-bottom: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 479.8px) {
+  .footer-connect {
+    margin-top: 0;
+    column-gap: 0;
+    justify-content: space-between;
+  }
+  .footer-connect-social {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 389.8px) {
+  .footer-connect {
+    flex-wrap: wrap;
+    row-gap: 1.5rem;
+  }
+  .footer-nav {
+    display: block;
+  }
+  .footer-nav-item {
+    width: 100%;
+  }
+  .footer-nav-right .footer-nav-item:last-child {
+    margin-bottom: 0;
+  }
+  .footer-item:nth-child(2) {
+    order: 3;
+  }
+  .footer-item:nth-child(4) {
+    order: 3;
+  }
+  .footer-feature {
+    margin-top: 0;
+    display: block;
+  }
+  .footer-feature-item:not(:nth-child(999)) {
+    margin: 0;
+    min-width: 18rem;
+    height: 4.8rem;
+  }
+  .footer-feature-item:not(:nth-child(999)) img {
+    object-fit: fill;
+  }
+}
+</style>
+
+<footer class="footer">
     <div class="container">
-        <div class="row">
-            <div class="span3">
-                <h5>ACCOUNT</h5>
-                <a href="login.html">YOUR ACCOUNT</a>
-                <a href="login.html">PERSONAL INFORMATION</a>
-                <a href="login.html">ADDRESSES</a>
-                <a href="login.html">DISCOUNT</a>
-                <a href="login.html">ORDER HISTORY</a>
+        <div class="footer-list">
+            <div class="footer-item footer-info">
+                <h3 class="footer-title footer-info-title">Tổng đài đặt vé và CSKH</h3>
+                <div class="footer-info-local">
+                    <div class="footer-info-phone"><a href="tel:19006067">1900 6067</a></div>
+                    <a href="#" class="footer-info-sub">
+                        <img src="./themes/images/ico/logoSaleNoti.png" alt="" class="footer-info-img">
+                    </a>
+                </div>
+                <p class="footer-info-name">CÔNG TY CỔ PHẦN XE KHÁCH PHƯƠNG TRANG FUTA BUS LINES</p>
+                <p class="footer-info-address"> Địa chỉ: 468-468A Lê Văn Lương, P.Tân Phong, Q.7, TP Hồ Chí Minh.
+                </p>
+                <p class="footer-info-mail">Email: <a href="mailto:hotro@futabus.vn">hotro@futabus.vn</a></p>
+                <div class="footer-info-contact">
+                    <p class="footer-info-call">Điện thoại: <a href="tel:02838386852">028 3838 6852</a></p>
+                    <p class="footer-info-call">Fax: <a href="tel:02838386853">028 3838 6853</a></p>
+                </div>
             </div>
-            <div class="span3">
-                <h5>INFORMATION</h5>
-                <a href="contact.html">CONTACT</a>
-                <a href="register.html">REGISTRATION</a>
-                <a href="legal_notice.html">LEGAL NOTICE</a>
-                <a href="tac.html">TERMS AND CONDITIONS</a>
-                <a href="faq.html">FAQ</a>
+            <div class="footer-item footer-line">
+                <h3 class="footer-title footer-line-title">FUTA Bus Lines</h3>
+                <div class="footer-nav">
+                    <ul class="footer-nav-left">
+                        <li class="footer-nav-item">
+                            <i class='bx bx-chevrons-right footer-nav-icon'></i>
+                            <a href="#" class="footer-nav-link">Về chúng tôi</a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <i class='bx bx-chevrons-right footer-nav-icon'></i>
+                            <a href="#" class="footer-nav-link">Lịch trình</a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <i class='bx bx-chevrons-right footer-nav-icon'></i>
+                            <a href="#" class="footer-nav-link">Tin tức</a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <i class='bx bx-chevrons-right footer-nav-icon'></i>
+                            <a href="#" class="footer-nav-link">Tuyển dụng</a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <i class='bx bx-chevrons-right footer-nav-icon'></i>
+                            <a href="#" class="footer-nav-link">Tra cứu thông tin đặt vé</a>
+                        </li>
+                    </ul>
+                    <ul class="footer-nav-right">
+                        <li class="footer-nav-item">
+                            <i class='bx bx-chevrons-right footer-nav-icon'></i>
+                            <a href="#" class="footer-nav-link">Điều khoản sử dụng</a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <i class='bx bx-chevrons-right footer-nav-icon'></i>
+                            <a href="#" class="footer-nav-link">Hỏi đáp</a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <i class='bx bx-chevrons-right footer-nav-icon'></i>
+                            <a href="#" class="footer-nav-link">Hướng dẫn đặt vé trên Web</a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <i class='bx bx-chevrons-right footer-nav-icon'></i>
+                            <a href="#" class="footer-nav-link">Hướng dẫn đặt vé trên App</a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <i class='bx bx-chevrons-right footer-nav-icon'></i>
+                            <a href="#" class="footer-nav-link">Mạng lưới văn phòng</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="span3">
-                <h5>OUR OFFERS</h5>
-                <a href="#">NEW PRODUCTS</a>
-                <a href="#">TOP SELLERS</a>
-                <a href="special_offer.html">SPECIAL OFFERS</a>
-                <a href="#">MANUFACTURERS</a>
-                <a href="#">SUPPLIERS</a>
+            <div class="footer-item footer-connect">
+                <div class="footer-connect-item">
+                    <h3 class="footer-title footer-connect-title">kết nối với chúng tôi</h3>
+                    <div class="footer-connect-link">
+                        <a href="#" class="footer-connect-social"><img src="./themes/images/ico/facebook.svg" alt="fb"></a>
+                        <a href="#" class="footer-connect-social"><img src="./themes/images/ico/youtube.svg" alt="ytb"></a>
+                    </div>
+                </div>
+                <div class="footer-connect-item">
+                    <h3 class="footer-title footer-connect-title">tải app futa</h3>
+                    <div class="footer-connect-link">
+                        <a href="#" class="footer-connect-app"><i class='bx bxl-apple'></i>App Store</a>
+                        <a href="#" class="footer-connect-app"><i class='bx bxl-play-store'></i>CH Play</a>
+                    </div>
+                </div>
             </div>
-            <div id="socialMedia" class="span3 pull-right">
-                <h5>SOCIAL MEDIA </h5>
-                <a href="#"><img width="60" height="60" src="themes/images/facebook.png" title="facebook"
-                        alt="facebook" /></a>
-                <a href="#"><img width="60" height="60" src="themes/images/twitter.png" title="twitter"
-                        alt="twitter" /></a>
-                <a href="#"><img width="60" height="60" src="themes/images/youtube.png" title="youtube"
-                        alt="youtube" /></a>
+            <div class="footer-item footer-feature">
+                
             </div>
         </div>
-        <p class="pull-right">&copy; Copyright by R16 Group</p>
-    </div><!-- Container End -->
-</div>
+        <div class="footer-end">
+            &copy; 2022 | Bản quyền thuộc về Công ty Cổ Phần Xe Khách Phương Trang FUTA Bus Lines | www.futabus.vn |
+            Chịu trách nhiệm nội dung: Đinh Văn Huỳnh
+        </div>
+    </div>
+</footer>

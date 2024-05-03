@@ -1,7 +1,7 @@
 <div id="header">
     <div class="container">
         <div id="welcomeLine" class="row">
-            <div class="span6">Welcome!<strong>
+            <div class="span6" style="color: white">Xin chào!<strong>
                     <%= userid %>
                 </strong></div>
             <div class="span6">
@@ -20,8 +20,8 @@
                 
                 <ul id="topMenu" class="nav pull-right">
                     <% if(userid!=null){ %>
-                        <li class="" ><a style="color: black" href="/order/orderManage">My order</a></li>
-                        <li class=""><a style="color: black" href="/cart">Cart</a></li>
+                        <!-- <li class="" ><a style="color: black" href="/order/orderManage">My order</a></li> -->
+                        <li class=""><a style="color: black" href="/cart">Hóa đơn</a></li>
                         <% }; %>
                             <li class="">
                                 <% if(userid==null){ %>
@@ -31,7 +31,7 @@
                                         <% if(userid !=null){ %>
                                             <a href="/account/logout" role="button" data-toggle="modal"
                                                 style="padding-right:0"><span
-                                                    class="btn btn-large btn-info">Logout</span></a>
+                                                    class="btn btn-large btn-info">Đăng xuất</span></a>
                                             <% } %>
 
                             </li>

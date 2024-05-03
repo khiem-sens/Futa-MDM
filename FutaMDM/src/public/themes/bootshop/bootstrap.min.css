@@ -2537,12 +2537,12 @@ button.close {
   font-size: 14px;
   line-height: 20px;
   *line-height: 20px;
-  color: #333;
+  color: white;
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
   cursor: pointer;
-  background-color: #f5f5f5;
+  background-color: #ef5222;
   *background-color: #e6e6e6;
   background-image: -moz-linear-gradient(top, #fff, #e6e6e6);
   background-image: -webkit-gradient(
@@ -2553,8 +2553,8 @@ button.close {
     to(#e6e6e6)
   );
   background-image: -webkit-linear-gradient(top, #fff, #e6e6e6);
-  background-image: -o-linear-gradient(top, #fff, #e6e6e6);
-  background-image: linear-gradient(to bottom, #fff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ef5222, #ef5222);
+  background-image: linear-gradient(to bottom, #00613d, #00613d);
   background-repeat: repeat-x;
   border: 1px solid #bbb;
   *border: 0;
@@ -2591,10 +2591,11 @@ button.close {
   *margin-left: 0;
 }
 .btn:hover {
-  color: #333;
+  color: white;
+  scale: 1.01;
   text-decoration: none;
-  background-color: #e6e6e6;
-  *background-color: #d9d9d9;
+  background-color: #00613d;
+  *background-color: #ef5222;
   background-position: 0 -15px;
   -webkit-transition: background-position 0.1s linear;
   -moz-transition: background-position 0.1s linear;
@@ -2766,7 +2767,7 @@ input[type="button"].btn-block {
   );
   background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
   background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
-  background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+  background-image: linear-gradient(to bottom, #ef5222, #ef5222);
   background-repeat: repeat-x;
   border-color: #bd362f #bd362f #802420;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -2779,12 +2780,12 @@ input[type="button"].btn-block {
 .btn-danger.disabled,
 .btn-danger[disabled] {
   color: #fff;
-  background-color: #bd362f;
-  *background-color: #a9302a;
+  background-color: #ef5222;
+  *background-color: #ef5222;
 }
 .btn-danger:active,
 .btn-danger.active {
-  background-color: #942a25 \9;
+  background-color: #ef5222;
 }
 .btn-success {
   color: #fff;
@@ -2847,7 +2848,7 @@ input[type="button"].btn-block {
 .btn-info.disabled,
 .btn-info[disabled] {
   color: #fff;
-  background-color: #2f96b4;
+  background-color: #ef5222;
   *background-color: #2a85a0;
 }
 .btn-info:active,
@@ -4622,15 +4623,15 @@ a.badge:hover {
 }
 .label-important,
 .badge-important {
-  background-color: #b94a48;
+  background-color: #ef5222;
 }
 .label-important[href],
 .badge-important[href] {
-  background-color: #953b39;
+  background-color: #ef5222;
 }
 .label-warning,
 .badge-warning {
-  background-color: #f89406;
+  background-color: #ef5222;
 }
 .label-warning[href],
 .badge-warning[href] {
