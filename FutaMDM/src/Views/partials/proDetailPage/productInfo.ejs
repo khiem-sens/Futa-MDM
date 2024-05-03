@@ -23,26 +23,18 @@
     <div class="row"
         style="border: 1px solid gainsboro; padding: 1.5rem; border-radius: 30px; box-shadow: 4px 4px 20px 1px hsla(0, 0%, 55%, 0.4)">
         <div id="gallery" class="span3">
-            <a href="<%= proInfo.thumbnail_url %>" title="<%= proInfo.name %>">
-                <img src="<%= proInfo.thumbnail_url %>" style="width:100%" alt="<%= proInfo.name %>" />
+            <a href="<%= proInfo.thumbnail %>" title="<%= proInfo.name %>">
+                <img src="<%= proInfo.thumbnail %>" style="width:100%; border-radius: 10px;" alt="<%= proInfo.name %>" />
             </a>
             <div id="differentview" class="moreOptopm carousel slide">
                 <div class="carousel-inner">
-                    <div class="item active">
-                        <a href="<%= proInfo.thumbnail_url %>"> <img style="width:29%"
-                                src="<%= proInfo.thumbnail_url %>" alt="" /></a>
-                    </div>
-                    <div class="item">
-                        <a href="<%= proInfo.thumbnail_url %>"> <img style="width:29%"
-                                src="<%= proInfo.thumbnail_url %>" alt="" /></a>
-                    </div>
+                   
                 </div>
                 <!--  
 <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a> 
 -->
             </div>
-
             <div class="btn-toolbar">
                 <div class="btn-group">
                     <span class="btn"><i class="icon-envelope"></i></span>
