@@ -2778,7 +2778,6 @@ input[type="button"].btn-block {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4d3a7d), to(#4d3a7d));
   background-image: -webkit-linear-gradient(top, #4d3a7d, #4d3a7d);
   background-image: -o-linear-gradient(top, #4d3a7d, #4d3a7d);
-  background-image: linear-gradient(to bottom, #4d3a7d, #4d3a7d);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4d3a7d', endColorstr='#ff4d3a7d', GradientType=0);
   border-color: #4d3a7d #4d3a7d #2d2249;
@@ -3481,7 +3480,7 @@ input[type="submit"].btn.btn-mini {
   min-height: 50px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #ef5222;
+  background-color: #ffffff;
   background-image: -moz-linear-gradient(top, #ad1d28, #ad1d28);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ad1d28), to(#ad1d28));
   background-image: -webkit-linear-gradient(top, #ad1d28, #ad1d28);

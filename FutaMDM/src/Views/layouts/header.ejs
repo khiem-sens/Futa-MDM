@@ -16,13 +16,12 @@
             </a>
             <div class="navbar-inner">
                 <a class="brand" href="/"><img src="themes/images/logo_2.png" alt="Amazone" /></a>
-                <input id="searchInput" onkeyup="handleSearchText()" placeholder="Seach..." type="text"
-                    style="padding-right: 26rem;margin-bottom: -19px;" />
-                <span class="badge badge-info" id="span_result"></span>
+                
+                
                 <ul id="topMenu" class="nav pull-right">
                     <% if(userid!=null){ %>
-                        <li class=""><a href="/order/orderManage">My order</a></li>
-                        <li class=""><a href="/cart">Cart</a></li>
+                        <li class="" ><a style="color: black" href="/order/orderManage">My order</a></li>
+                        <li class=""><a style="color: black" href="/cart">Cart</a></li>
                         <% }; %>
                             <li class="">
                                 <% if(userid==null){ %>
