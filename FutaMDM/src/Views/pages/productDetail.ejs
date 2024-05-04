@@ -22,11 +22,11 @@
 										<%= proInfo.name %>
 									</a></li>
 							</ul>
-							<%- include('../partials/proDetailPage/productInfo.ejs',{proInfo, price, comments,cmtImages,cmtCustomers,sellers }) %>
+							<%- include('../partials/proDetailPage/productInfo.ejs',{proInfo, price, comments }) %>
 						</div>
 				</div>
-				<%- include('../partials/proDetailPage/comments.ejs',{proInfo, price, comments,cmtImages,cmtCustomers,sellers,userid }) %>
-				<%- include('../partials/proDetailPage/myComment.ejs',{proInfo, checkCommentExists,userid}) %>
+				<%- include('../partials/proDetailPage/comments.ejs',{proInfo, price, comments, userid }) %>
+				<%- include('../partials/proDetailPage/myComment.ejs',{proInfo,userid, checkCommentExists}) %>
 
 			</div>
 		</div>

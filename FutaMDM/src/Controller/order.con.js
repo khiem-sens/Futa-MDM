@@ -2,6 +2,8 @@ const { getCartInfo } = require('./cart.con');
 const mysqlDB = require('../Model/Mysql/invoice.mysql');
 const redisDB = require("../Model/Redis/cart.redis");
 const {moneyConvert} = require("../public/javascript/moneyConvert");
+const crypto = require('crypto');
+
 
 
 const addInvoice = async (userid) => {
@@ -15,6 +17,7 @@ const addInvoice = async (userid) => {
     })
 
     await mysqlDB.addInvoice({
+        ID:  crypto.randomBytes(16).toString('hex'),
         USERID: userid,
         CARTID: 'CART:' + userid,
         LISTPRODUCTID: String(listProsID),
@@ -40,14 +43,16 @@ const orderCon = async (req, res) => {
 }
 
 const cancleOrder = async (req, res) => {
-    let userid = req.userid;
-    await mysqlDB.deleteInvoice(userid);
+    let id = req.body.ID;
+    console.log("Cancle order");
+    console.log(id);
+    await mysqlDB.deleteInvoice(id);
     res.status(201).json({});
 }
 
 const orderAgain = async (req, res) => {
-    let userid = req.userid;
-    await mysqlDB.orderAgain(userid);
+    let id = req.body.ID;
+    await mysqlDB.orderAgain(id);
     res.status(201).json({});
 }
 

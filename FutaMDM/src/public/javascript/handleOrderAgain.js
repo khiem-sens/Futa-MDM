@@ -1,9 +1,9 @@
-function handleOrderAgain(orderID){
+function handleOrderAgain(ID){
     $.ajax({
         type:"POST",
         url:"/order/orderagain" ,
         data:{
-            orderID: orderID
+            ID: ID
         }
     }).done(()=>setTimeout(window.location.reload(),1000));
 }
