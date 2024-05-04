@@ -23,6 +23,8 @@ app.use('/',tempForTest,require('./src/Routes/homePage.route'));
 //Product Detail routes
 app.use('/productdetail', tempForTest,require('./src/Routes/productDetail.route'));
 
+app.use('/search/route', tempForTest,require('./src/Routes/searchRoute.route'));
+
 //Cart page routes
 app.use('/cart',tempForTest,require('./src/Routes/cart.route'));
 

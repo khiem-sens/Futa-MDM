@@ -1,5 +1,5 @@
 const express = require("express");
-const searchRoute = require("../Controller/seinarchRoute.con");
+const searchRoute = require("../Controller/searchRoute.con");
 const route = express.Router();
 
 //root path '/searchroute'

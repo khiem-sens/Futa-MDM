@@ -9,8 +9,10 @@ module.exports =(app) => {
         secret: 'keyboard cat',
         resave: false,
         saveUninitialized: true}));
-    app.use('/',express.static('src/public'));  // Only apply static folder for name index.ejs
-    app.use('/productdetail',express.static('src/public')); 
+    app.use('/',express.static('src/public'));
+    app.use('/productdetail',express.static('src/public'));   // Only apply static folder for name index.ejs
+    app.use('/search/route',express.static('src/public')); 
+    app.use('/',express.static('src/public')); 
     app.use('/cart',express.static('src/public'));  
     app.use('/order',express.static('src/public'));  
     app.set("view engine", "ejs");        
