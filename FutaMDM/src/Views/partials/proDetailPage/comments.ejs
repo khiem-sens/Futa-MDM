@@ -1,45 +1,43 @@
 <div class="row">
-    <h4 style="font-size: 24px;margin-top: 30px;margin-bottom: 18px; color: #00613d">Bình luận</h4>
-
-        <% if (Array.isArray(comments) && comments.length > 0) { %>
-            <% comments.forEach(comment => { %>
-                <div class="row" style="display: inline-flex">
-                    <div class="col-md-auto">
-                        <img src="<%= comment.customer.avatar %>" alt="" style="border-radius: 40px;">
-                    </div>
-                    <div class="col-md-auto"
-                    style="padding-top: 25px;padding-left: 14px;font-size: 20px;font-weight: 600;">
+    <h4 style="font-size: 24px; margin-top: 30px; margin-bottom: 18px; margin-left: -2rem; color: #00613d">Bình luận</h4>
+    <% if (Array.isArray(comments) && comments.length> 0) { %>
+        <% comments.forEach(comment=> { %>
+            <div class="row" style="display: inline-flex">
+                <div class="col-md-auto">
+                    <img src="<%= comment.customer.avatar %>" alt="" style="border-radius: 40px;">
+                </div>
+                <div class="col-md-auto" style="padding-top: 25px;padding-left: 14px;font-size: 18px;font-weight: 600;">
                     <%= comment.customer.name %>
                 </div>
             </div>
-            <div class="row" style="font-size: 12px;color: gray;">
-                Join in <%= comment.customer.created_time %>
+            <div>
+                <div class="row" style="font-size: 12px;color: gray;">
+                    Join in <%= comment.customer.created_time %>
+                </div>
+                <div class="row" style="display: inline-flex;">
+                    <div class="col-md-auto">
+                        <span class="material-icons" style="font-size: 20px; color: yellow;">
+                            star
+                        </span>
+                    </div>
+                    <div class="col-md-auto">
+                        <%= comment.comment.rating %>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <%= comment.comment.content %>
+            </div>
+            <div class="row" style="display: inline-flex;">
+            </div>
+            <div class="row" style="font-size: 12px;color: gray;padding-bottom: 25px;">
+                Comment on <%= new Date(comment.comment.create_at*1000).toLocaleString() %>
             </div>
 </div>
-<div class="span9">
-    <div class="row" style="display: inline-flex;">
-        <div class="col-md-auto">
-            <span class="material-icons" style="font-size: 15px;">
-                star
-            </span>
-        </div>
-        <div class="col-md-auto" style="padding-top: 6px;">
-            <%= comment.comment.rating %>
-        </div>
-    </div>
-    <div class="row">
-        <%= comment.comment.content %>
-    </div>
-    <div class="row" style="display: inline-flex;">
-    </div>
-    <div class="row" style="font-size: 12px;color: gray;padding-bottom: 25px;">
-        Comment on <%= new Date(comment.comment.create_at*1000).toLocaleString() %>
-    </div>
 
 </div>
-</div>
-            <% }) %>
-        <% } else { %>
-            <p>No comments found.</p>
+<% }) %>
+    <% } else { %>
+        <p>No comments found.</p>
         <% } %>
-</div>
+            </div>
