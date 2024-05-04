@@ -26,18 +26,18 @@ const productDetailCon = async (req, res) => {
     let comments = await neoDB.getCommentByProductID(proInfo.id);
     let checkExistInCart = await redisDB.checkExistPro('CART:' + userid, 'PRODUCT:' + proInfo._id);
 
-    for (let i = 0; i < comments.length; i++) {
-        let images = await neoDB.getCommentImage(proInfo.id, comments[i].id);
-        let customers = await neoDB.getCustomerComment(proInfo.id, comments[i].id);
-        let seller = await neoDB.getSeller(proInfo.id, comments[i].id);
+    // for (let i = 0; i < comments.length; i++) {
+    //     let images = await neoDB.getCommentImage(proInfo.id, comments[i].id);
+    //     let customers = await neoDB.getCustomerComment(proInfo.id, comments[i].id);
+    //     let seller = await neoDB.getSeller(proInfo.id, comments[i].id);
 
-        cmtImages.push(...images);
-        cmtCustomers.push(customers);
-        sellers.push(seller);
-    };
+    //     cmtImages.push(...images);
+    //     cmtCustomers.push(customers);
+    //     sellers.push(seller);
+    // };
     let checkCommentExists = await neoDB.checkExistsComment(userid, proInfo.id);
 
-    res.render("pages/productDetail", {userid, proInfo, price, comments, cmtImages, cmtCustomers, sellers, checkExistInCart, checkCommentExists });
+    res.render("pages/productDetail", {userid, proInfo, price, comments, checkExistInCart, checkCommentExists });
 }
 
 const setComment = async(req, res) =>{

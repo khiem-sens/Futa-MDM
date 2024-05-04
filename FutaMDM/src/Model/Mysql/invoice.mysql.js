@@ -9,11 +9,14 @@ const getInvoice = async (userID) => {
 }
 
 const deleteInvoice = async (userid) => {
-    return await db(process.env.MYSQL_TABLE_INVOICE).where('USERID',userid).update('IS_ACTIVE',0).update('STATUS','Đã huỷ');
+    console.log(userid);
+    return await db(process.env.MYSQL_TABLE_INVOICE).where('ID',userid).update('IS_ACTIVE',0).update('STATUS','Đã huỷ');
 }
 
 const orderAgain = async (userid) => {
-    return await db(process.env.MYSQL_TABLE_INVOICE).where('USERID',userid)
+    console.log("Order again");
+    console.log(userid);
+    return await db(process.env.MYSQL_TABLE_INVOICE).where('ID',userid)
     .update('IS_ACTIVE',1)
     .update('STATUS','Chờ xác nhận')
     .update('ORDER_DATE',new Date());

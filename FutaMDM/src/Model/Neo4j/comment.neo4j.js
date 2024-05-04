@@ -29,13 +29,33 @@ const getCommentByProductID = async (proID) => {
     let session = driver.session();
     let commentLists = [];
     try {
-        var result = await session.run(`MATCH (c:Comment) WHERE (c)-[:COMMENT_FOR]->({id:${proID}}) RETURN c`, {});
-        // MATCH (c:Customer)-[:COMMENT]->(com:Comment)
-        // WHERE com.productID = 7379565
-        // RETURN c, com
-        result.records.forEach((singleRecord) => {
-            commentLists.push(singleRecord.get(0).properties);
-        })
+        console.log(proID);
+        // var result = await session.run(`MATCH (c:Comment) WHERE (c)-[:COMMENT_FOR]->({id:${proID}}) RETURN c`, {});
+        var result = await session.run(`        MATCH (c:Customer)-[:COMMENT]->(com:Comment)
+        WHERE com.productID = ${proID}
+        RETURN c, com`, {});
+        console.log(result.records);
+        result.records.forEach(record => {
+            let customer = record.get('c');
+            let comment = record.get('com');
+        
+            // convert Integer instances to numbers
+            let productID = comment.properties.productID.toNumber();
+            let rating = comment.properties.rating.toNumber();
+            let create_at = comment.properties.create_at.toNumber();
+        
+            // push to commentLists
+            commentLists.push({
+                customer: customer.properties,
+                comment: {
+                    ...comment.properties,
+                    productID,
+                    rating,
+                    create_at
+                }
+            });
+            console.log(commentLists);
+        });
     } catch (error) {
         console.log(error);
     } finally {
