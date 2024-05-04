@@ -8,27 +8,28 @@ const homePageCon = async (req, res) => {
     let allPro = await mongoDB.getAllProducts();
     let _10Pro = [];
     let i = 0;
+    console.log(allPro.length);
 allPro.forEach(async (element) => {
-    
-    let nameRoute = element.name;
-    console.log(nameRoute);
-    // let departure = nameRoute.split("-")[0];
-    // let destination = nameRoute.split("-")[1];
-    // let checkExistDeparture = await neoDB.checkExistDepartureByName(departure);
-    // let checkExistDestination = await neoDB.checkExistDestinationByName(destination);
-    // if(checkExistDeparture == false){
-    //     await neoDB.setDeparture(departure, element.status, element.timeDeparture);
-    //     await neoDB.getDepartureByName(destination);
-    // }
-    // if(checkExistDestination == false){
-    //     await neoDB.setDestination(destination, element.status, element.timeArrival);
-    //     await neoDB.getDestinationByName(destination);
-    // }
-    // await neoDB.setRelationDeptoArr(element);
     if (i < 9 && element.rating_average === 5) {
         _10Pro.push(element);
         i++;
     }
+    let nameRoute = element.name;
+    let departure = nameRoute.split("-")[0];
+    let destination = nameRoute.split("-")[1];
+    let checkExistDeparture = await neoDB.checkExistDepartureByName(element.id);
+    let checkExistDestination = await neoDB.checkExistDestinationByName(element.id);
+    if(checkExistDeparture == false){
+        await neoDB.setDeparture(element.id, departure, element.status, element.timeDeparture);
+        await neoDB.getDepartureByName(element.id);
+    }
+
+    if(checkExistDestination == false){
+        await neoDB.setDestination(element.id, destination, element.status, element.timeArrival);
+        await neoDB.getDestinationByName(element.id);
+    }
+    await neoDB.setRelationDeptoArr(element.id);
+
 })
 
     let _4proPerLine = [];

@@ -9,25 +9,25 @@ try {
 }
 
 
-const setDeparture = async (departure, status, timeDeparture) => {
+const setDeparture = async (id, departure, status, timeDeparture) => {
     let session = driver.session();
     try {
         await session.run(`
-        MERGE (d:Departure {name: $name})
-        ON CREATE SET d = {name: $name, status: $status, timeDeparture: $timeDeparture}`, 
-        { name: departure, status: status, timeDeparture: timeDeparture });
+        MERGE (d:Departure {id: $id})
+        ON CREATE SET d = {id: $id, name: $name, status: $status, timeDeparture: $timeDeparture}`, 
+        { id: id, name: departure, status: status, timeDeparture: timeDeparture });
     } catch (error) {
         console.log(error);
     } finally {
         await session.close();
     }
 }
-const checkExistDepartureByName = async (departure) => {
+const checkExistDepartureByName = async (id) => {
     let session = driver.session();
     try {
         let result = await session.run(`
-        MATCH (d:Departure {name: $name})
-        RETURN d`, { name: departure });
+        MATCH (d:Departure {id: $id})
+        RETURN d`, { id: id});
         return result.records.length > 0;
     } catch (error) {
         console.log(error);
@@ -36,13 +36,13 @@ const checkExistDepartureByName = async (departure) => {
         await session.close();
     }
 }
-const getDepartureByName = async (departure) => {
+const getDepartureByName = async (id) => {
     let session = driver.session();
     try {
         let result = await session.run(`
-        MATCH (d:Departure {name: $name})
-        RETURN d`, { name: departure });
-        console.log(result);
+        MATCH (d:Departure {id:$id})
+        RETURN d`, { id: id });
+        console.log(result.records);
         return result.records;
     } catch (error) {
         console.log(error);
@@ -52,12 +52,12 @@ const getDepartureByName = async (departure) => {
     }
 }
 
-const setDestination = async (destination, status, timeArrival) => {
+const setDestination = async (id, destination, status, timeArrival) => {
     let session = driver.session();
     try {
         await session.run(`
-        MERGE (a:Arrival {name: $name})
-        ON CREATE SET a = {name: $name, status: $status, timeArrival: $timeDeparture}`, { name: destination, status: status, timeArrival: timeArrival});    
+        MERGE (a:Arrival {id: $id})
+        ON CREATE SET a = {id: $id, name: $name, status: $status, timeArrival: $timeArrival}`, { id: id, name: destination, status: status, timeArrival: timeArrival});    
     } catch (error) {
         console.log(error);
     } finally {
@@ -65,12 +65,12 @@ const setDestination = async (destination, status, timeArrival) => {
     }
 }
 
-const checkExistDestinationByName = async (destination) => {
+const checkExistDestinationByName = async (id) => {
     let session = driver.session();
     try {
         let result = await session.run(`
-        MATCH (a:Arrival {name: $name})
-        RETURN a`, { name: destination });
+        MATCH (a:Arrival {id: $id})
+        RETURN a`, { id: id});
         return result.records.length > 0;
     } catch (error) {
         console.log(error);
@@ -80,13 +80,13 @@ const checkExistDestinationByName = async (destination) => {
     }
 }
 
-const getDestinationByName = async (destination) => {
+const getDestinationByName = async (id) => {
     let session = driver.session();
     try {
         let result = await session.run(`
-        MATCH (a:Arrival {name: $name})
-        RETURN a`, { name: destination });
-        console.log(result);
+        MATCH (a:Arrival {id: $id})
+        RETURN a`, { id: id });
+        console.log(result.records);
         return result.records;
     } catch (error) {
         console.log(error);
@@ -96,13 +96,13 @@ const getDestinationByName = async (destination) => {
     }
 }
 
-const setRelationDeptoArr = async (departure, destination) => {
+const setRelationDeptoArr = async (id) => {
     let session = driver.session();
     try {
         await session.run(`
-        MATCH (d:Departure {name: $departure})
-        MATCH (a:Arrival {name: $destination})
-        MERGE (d)-[:ROUTE]->(a)`, { departure, destination });    
+        MATCH (d:Departure {id: $id})
+        MATCH (a:Arrival {id: $id})
+        MERGE (d)-[:ROUTE]->(a)`, { id: id});    
     } catch (error) {
         console.log(error);
     } finally {
@@ -114,11 +114,14 @@ const getRouteByName = async (departure, destination) => {
     let session = driver.session();
     try {
         let result = await session.run(`
-        MATCH path = (d:Departure {name: $departure})-[:ROUTE*]->(a:Arrival {name: $destination})
-        WHERE ALL(node IN nodes(path)[1..-1] WHERE (node:DestinationTmp))
-        RETURN path`, { departure, destination });
-        console.log(result.records);
+        MATCH (d:Departure {name: $departure})-[:ROUTE]->(a:Arrival)
+WITH collect(a.name) AS tmp1
+MATCH (d:Departure)-[:ROUTE]->(a:Arrival {name: $destination})
+WITH tmp1, collect(d.name) AS tmp2
+RETURN [x IN tmp1 WHERE x IN tmp2] AS commonCities`, { departure, destination });
+console.log(commonCities.join(', '));
         return result.records;
+        
 
     } catch (error) {
         console.log(error);
