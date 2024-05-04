@@ -13,8 +13,6 @@ require('./src/Config/Config')(app);
 //Login, Register routes
 app.use('/account', require('./src/Routes/account.route'));
 
-app.use('/admin', require('./src/Routes/admin.route'));
-
 app.use('/comment', require('./src/Routes/comment.route'));
 
 //homePage routes
