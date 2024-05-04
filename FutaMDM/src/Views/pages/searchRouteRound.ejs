@@ -22,10 +22,21 @@
 									<%= searchText %>
 								</a></li>
 							</ul>
-							<h2>Chuyến đi</h2>
-							<%- include('../partials/search/listSreach.ejs',{_listOneWay, moneyConvert}) %>
-							<h2>Chuyến về</h2>
-							<%- include('../partials/search/listSreachRound.ejs',{_listReturn, moneyConvert}) %>
+							<div>
+								<h2 style="color: #00613d; margin-right: -10rem;">Chuyến đi</h2>
+								<div><p>Không điểm dừng</p></div>
+								<%- include('../partials/search/listSreach.ejs',{_listOneWay, moneyConvert}) %>
+								<p>Một điểm dừng</p>
+								<%- include('../partials/search/listSreach.ejs',{_listOneWay, moneyConvert}) %>
+							</div>
+
+							<div>
+								<h2 style="color: #00613d">Chuyến về</h2>
+								<p>Không điểm dừng</p>
+								<%- include('../partials/search/listSreachRound.ejs',{_listReturn, moneyConvert}) %>
+								<p>Một điểm dừng</p>
+								<%- include('../partials/search/listSreachRound.ejs',{_listReturn, moneyConvert}) %>
+							</div>
 						</div>
 					</div>
 					
