@@ -22,7 +22,13 @@
 										<%= searchText %>
 									</a></li>
 							</ul>
-							<%- include('../partials/search/listSreach.ejs',{_listOneWay, moneyConvert}) %>
+							<h2>Chuyến đi</h2>
+							<div>
+								<p>Không điểm dừng</p>
+								<%- include('../partials/search/listSreach.ejs',{_listOneWay, moneyConvert}) %>
+								<p>Một điểm dừng</p>
+								<%- include('../partials/search/listSreach.ejs',{_listOneWay, moneyConvert}) %>
+							</div>
 						</div>
 				</div>
 

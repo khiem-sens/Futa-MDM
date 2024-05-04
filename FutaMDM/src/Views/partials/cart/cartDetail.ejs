@@ -1,52 +1,70 @@
 <div class="container" style="display: flex; justify-content: center; align-items: center;">
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Chuyến xe</th>
-            <th>Thông tin</th>
-            <th>Số lượng vé</th>
-            <th>Tổng tiền(VND)</th>
-            <th>Tổng tiền(USD)</th>
-            <th>Tổng</th>
-        </tr>
-    </thead>
-    <tbody> 
-        <% let total_vnd = 0, total_usd = 0; %> 
-        <% cartInfo.forEach((product)=>{ %>
+    <table class="table table-bordered">
+        <thead>
             <tr>
-                <td> <img width="60" src="<%= product.thumbnail_url %>" alt="<%= product.product_name %>" /></td>
-                <td>
-                    <%= product.product_name %>
-                </td>
-                <td>
-                    <div class="input-append">
-                        <input class="span1" style="max-width:34px" value="<%= product.quantity %>" id="<%= product.product_objID %>" size="16" type="text" min="0" disabled>
-                            <button class="btn" type="button" onClick="handleMinus(`<%= product.product_objID %>`)" ><i class="icon-minus"></i></button>
-                            <button class="btn" type="button" onClick="handlePlus(`<%= product.product_objID %>`)"><i class="icon-plus"></i></button>
-                            <button class="btn btn-danger" type="button" onClick="handleRemove(`<%= product.product_objID %>`)"><i class="icon-remove icon-white"></i></button>
-                    </div>
-                </td>
-                <td id="price<%= product.product_objID %>">
-                    <%=  moneyConvert(String(product.price)) %>
-                </td>
-                <td>
-                    $<%= product.price_usd %>
-                </td>
-                <td id="total<%= product.product_objID %>"><%= moneyConvert(String(product.total_price_vnd)) %></td>
+                <th>Chuyến xe</th>
+                <th>Giờ khởi hành</th>
+                <th>Loại xe</th>
+                <th>Quãng đường (km)</th>
+                <th>Số lượng vé</th>
+                <th>Giá vé (VNĐ)</th>
+                <th>Tổng</th>
             </tr>
-            <% total_vnd +=  product.total_price_vnd; total_usd += product.total_price_usd%> 
-            <% }) %>
+        </thead>
+        <tbody>
+            <% let total_vnd=0, total_usd=0; %>
+                <% cartInfo.forEach((product)=>{ %>
+                    <tr>
+                        <td>
+                            <%= product.product_name %>
+                        </td>
+                        <td>
+                            <%= product.timeDeparture %>
+                        </td>
+                        <td>
+                            <%= product.typeCar %>
+                        </td>
+                        <td>
+                            <%= product.distance %>
+                        </td>
+                        <td>
+                            <div class="input-append">
+                                <input class="span1" style="max-width:34px" value="<%= product.quantity %>"
+                                    id="<%= product.product_objID %>" size="16" type="text" min="0" disabled>
+                                <button class="btn" type="button"
+                                    onClick="handleMinus(`<%= product.product_objID %>`)"><i
+                                        class="icon-minus"></i></button>
+                                <button class="btn" type="button"
+                                    onClick="handlePlus(`<%= product.product_objID %>`)"><i
+                                        class="icon-plus"></i></button>
+                                <button class="btn btn-danger" type="button"
+                                    onClick="handleRemove(`<%= product.product_objID %>`)"><i
+                                        class="icon-remove icon-white"></i></button>
+                            </div>
+                        </td>
+                        <td id="price<%= product.product_objID %>">
+                            <%= moneyConvert(String(product.price)) %>
+                        </td>
+                        <td id="total<%= product.product_objID %>">
+                            <%= moneyConvert(String(product.total_price_vnd)) %>
+                        </td>
+                    </tr>
+                    <% total_vnd +=product.total_price_vnd; total_usd +=product.total_price_usd%>
+                        <% }) %>
 
-                <tr>
-                    <td colspan="5" style="text-align:right">Total Price(VND): </td>
-                    <td class="label label-important" style="display:block"> <%= moneyConvert(String(total_vnd))  %></td>
-                </tr>
-                <tr>
-                    <td colspan="5" style="text-align:right" >Total Price(USD): </td>
-                    <td class="label label-important" style="display:block"> $<%= total_usd.toFixed(2) %></td>
-                </tr>
-    </tbody>
-</table>
+                            <tr>
+                                <td colspan="6" style="text-align:right">Tổng tiền (VND): </td>
+                                <td class="label label-important" style="display:block">
+                                    <%= moneyConvert(String(total_vnd)) %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="text-align:right">Tổng tiền (USD): </td>
+                                <td class="label label-important" style="display:block"> $<%= total_usd.toFixed(2) %>
+                                </td>
+                            </tr>
+        </tbody>
+    </table>
 </div>
 <script src="/javascript/handlePlus.cart.js"></script>
 <script src="/javascript/handleMinus.cart.js"></script>
