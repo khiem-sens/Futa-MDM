@@ -121,8 +121,7 @@ WITH tmp1, collect(d.name) AS tmp2
 RETURN [x IN tmp1 WHERE x IN tmp2] AS commonCities`, { departure, destination });
 console.log(result.records);
         let commonCities = result.records[0].get('commonCities');
-console.log(commonCities.join(', '));
-        return result.records;
+        return commonCities;
         
 
     } catch (error) {
