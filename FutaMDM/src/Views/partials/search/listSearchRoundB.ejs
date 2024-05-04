@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="./src/Views/boxicon.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<section class="popular">
+  <% _routeTmp2.forEach(pro=> { %>
+    <ul class="popular-list">
+      <a href="/productdetail/<%= pro._id %>">
+        <li class="popular-item">
+          <a href="/productdetail/<%= pro._id %>" class="popular-item-link">
+            <img src="<%= pro.thumbnail%>" alt="" class="popular-item-image" style="width: 20rem; max-height: 8rem;">
+            <div class="popular-info" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+              <div class="popular-info-title" >
+                <span class="popular-info-start popular-info-to-go" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                  <%= pro.name %>
+                </span>
+              </div>
+              <ul class="popular-info-detail">
+                <li class="popular-info-distance">
+                  <i class='bx bxs-map popular-info-icon'></i>
+                  <span class="popular-info-text">
+                    <%= pro.distance %> km  
+                  </span>
+                </li>
+                <li class="popular-info-timespan">
+                  <i class='bx bxs-time-five popular-info-icon'></i>
+                  <span class="popular-info-text">
+                    <%= pro.time %>
+                  </span>
+                </li>
+                <li class="popular-info-cost">
+                  <i class='bx bxs-wallet popular-info-icon'></i>
+                  <span class="popular-info-text">
+                    <%= pro.price %> đ
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </a>
+        </li>
+      </a>
+
+      <a href="/productdetail/<%= pro._id %>">
+        <li class="popular-item">
+          <a href="/productdetail/<%= pro._id %>" class="popular-item-link">
+            <img src="<%= pro.thumbnail %>" alt="" class="popular-item-image" style="width: 20rem; max-height: 8rem;">
+            <div class="popular-info" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+              <div class="popular-info-title">
+                <span class="popular-info-start popular-info-to-go" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                  <%= pro.name %>
+                </span>
+              </div>
+              <ul class="popular-info-detail">
+                <li class="popular-info-distance">
+                  <i class='bx bxs-map popular-info-icon'></i>
+                  <span class="popular-info-text">
+                    <%= pro.distance %> km
+                  </span>
+                </li>
+                <li class="popular-info-timespan">
+                  <i class='bx bxs-time-five popular-info-icon'></i>
+                  <span class="popular-info-text">
+                    <%= pro.time %>
+                  </span>
+                </li>
+                <li class="popular-info-cost" style="padding-left: -1rem">
+                  <i class='bx bxs-wallet popular-info-icon'></i>
+                  <span class="popular-info-text">
+                    <%= pro.price %> đ
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </a>
+        </li>
+      </a>
+
+    </ul>
+    <% }); %>
+      </div>
+</section>
+</ul>
