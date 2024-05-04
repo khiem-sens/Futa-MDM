@@ -24,4 +24,4 @@ const homePageCon = async (req, res) => {
 }
 
 
-module.exports = { homePageCon }
+module.exports = { homePageCon}

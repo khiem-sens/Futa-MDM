@@ -15,6 +15,7 @@ const getProduct = async (req, res) => {
 
 
 const productDetailCon = async (req, res) => {
+    console.log(req.userid);
     let userid = req.userid;
     let cmtImages = [];
     let cmtCustomers = [];

@@ -752,9 +752,13 @@
 												</div>
 											</div>
 										</div>
-										<button class="booking-submit form-submit-button" type="submit">
+										<button class="booking-submit form-submit-button" type="submit" id="search-route" >
 											<i class="fa-solid fa-magnifying-glass booking-submit-icon"></i>
-											<span class="booking-submit-text">tìm chuyến xe</span>
+												<span class="booking-submit-text">tìm chuyến xe</span>
+												<!-- <a id="searchLink" href="#" class="booking-submit form-submit-button" type="submit">
+													<i class="fa-solid fa-magnifying-glass booking-submit-icon"></i>
+													<span class="booking-submit-text">tìm chuyến xe</span> -->
+
 										</button>
 									</form>
 
@@ -765,6 +769,30 @@
 								TUYẾN PHỔ BIẾN</h4>
 							<%- include('../partials/homePage/latestProduct.ejs',{_10Pro: _10Pro}); %>
 						</div>
+						<script>
+							document.getElementById('search-route').addEventListener('click', function(e) {
+								// prevent the default action
+								e.preventDefault();
+								let valueDeparture = document.getElementById('route-departure').value;
+								let valueDestination = document.getElementById('route-destination').value;
+							    let oneWay = document.getElementById('options-one-way').checked;
+    							let roundTrip = document.getElementById('options-two-way').checked;
+								let route = `${valueDeparture}-${valueDestination}`;
+								console.log(route);
+								// set the href attribute of the anchor tag
+								if (oneWay) {
+									let time = document.getElementById('date-departure').value;
+									let flagCheck = false;
+									window.location.href = `/search/route/${route}?time=${time}&roundTrip=${flagCheck}`;
+								} else if (roundTrip) {
+									let timeDeparture = document.getElementById('date-departure').value;
+									let timeDestination = document.getElementById('date-destination').value;
+									let flagCheck = true;
+									let time = `${timeDeparture}/${timeDestination}`;
+									window.location.href = `/search/route/${route}?time=${time}&roundTrip=${flagCheck}`;
+								}
+							});
+						</script>
 					</div>
 				</div>
 			</div>

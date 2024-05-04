@@ -30,6 +30,9 @@ const getCommentByProductID = async (proID) => {
     let commentLists = [];
     try {
         var result = await session.run(`MATCH (c:Comment) WHERE (c)-[:COMMENT_FOR]->({id:${proID}}) RETURN c`, {});
+        // MATCH (c:Customer)-[:COMMENT]->(com:Comment)
+        // WHERE com.productID = 7379565
+        // RETURN c, com
         result.records.forEach((singleRecord) => {
             commentLists.push(singleRecord.get(0).properties);
         })

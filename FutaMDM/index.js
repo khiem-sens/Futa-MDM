@@ -20,9 +20,6 @@ app.use('/comment', require('./src/Routes/comment.route'));
 //homePage routes
 app.use('/',tempForTest,require('./src/Routes/homePage.route'));
 
-//search post route
-app.use('/search', require('./src/Routes/search.route'));
-
 //Product Detail routes
 app.use('/productdetail', tempForTest,require('./src/Routes/productDetail.route'));
 

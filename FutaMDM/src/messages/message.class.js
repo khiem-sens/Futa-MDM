@@ -1,5 +1,5 @@
 class message {
-    static welcome = 'WELCOME TO AMOZONE';
+    static welcome = 'WELCOME TO FUTABUS';
     static mongo_Connect_Success = "MongoDB Connect Successful !!!";
     static neo4j_Connect_Success = "Neo4j Connect Successful !!!";
     static redis_Connect_Success = "RedisDB Connect Successful !!!";

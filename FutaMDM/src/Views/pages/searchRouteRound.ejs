@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<%- include('../layouts/head.ejs') %>
+</head>
+
+<body>
+	<%- include('../layouts/header.ejs',{userid}) %>
+		<!-- Header End====================================================================== -->
+		<div id="mainBody">
+			<div class="container">
+				<div class="row">
+					<!-- Sidebar ================================================== -->
+					<%- include('../layouts/sideBar.ejs') %>
+						<!-- Sidebar end=============================================== -->
+						<div class="span9">
+							<ul class="breadcrumb">
+								<li>Trang chủ <span class="divider">/</span></li>
+								<li>Chuyến xe <span class="divider">/</span></li>
+								<li class="active"><a href="/">
+										<%= searchText %>
+									</a></li>
+							</ul>
+                            <h2>Chuyến đi</h2>
+							<%- include('../partials/search/listSreach.ejs',{_listOneWay, moneyConvert}) %>
+                            <h2>Chuyến về</h2>
+                            <%- include('../partials/search/listSreachRound.ejs',{_listReturn, moneyConvert}) %>
+						</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- MainBody End ============================= -->
+		<!-- Footer ================================================================== -->
+		<%- include('../layouts/footer.ejs') %>
+			<!-- Placed at the end of the document so the pages load faster ============================================= -->
+			<script src="themes/js/jquery.js" type="text/javascript"></script>
+			<script src="themes/js/bootstrap.min.js" type="text/javascript"></script>
+			<script src="themes/js/google-code-prettify/prettify.js"></script>
+
+			<script src="themes/js/bootshop.js"></script>
+			<script src="themes/js/jquery.lightbox-0.5.js"></script>
+</body>
+
+</html>
