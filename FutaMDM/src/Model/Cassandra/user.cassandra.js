@@ -7,7 +7,7 @@ try{
 var client = new cassandra.Client({
     contactPoints: [process.env.CASSANDRA_HOST],
     localDataCenter: 'datacenter1',
-    keyspace: 'amazone'     //Keyspace is equal to database in RDBMS// 
+    keyspace: 'amazon'     //Keyspace is equal to database in RDBMS// 
 });
 }catch(error){
     console.log(message.cassandra_Connect_Fail);
