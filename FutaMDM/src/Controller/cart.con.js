@@ -14,7 +14,7 @@ const getCartInfo = async (userid) => {
         cartInfo.push({
             product_objID: proID,
             product_name: proInfo.name,
-            thumbnail_url: proInfo.thumbnail_url,
+            thumbnail_url: proInfo.thumbnail,
             price: proInfo.price,
             price_usd: proInfo.price_usd.toFixed(2),
             quantity: +hashCart[field],
