@@ -10,8 +10,10 @@ const addInvoice = async (userid) => {
     let cartInfo = await getCartInfo(userid);
     let listProsID = [];
     let total_vnd = 0, total_usd = 0;
+    let timeDepart = ''
     cartInfo.map((proInfo) => {
         listProsID.push(proInfo.product_objID);
+        timeDepart = proInfo.timeDeparture;
         total_vnd += proInfo.total_price_vnd;
         total_usd += proInfo.total_price_usd;
     })
@@ -21,6 +23,7 @@ const addInvoice = async (userid) => {
         USERID: userid,
         CARTID: 'CART:' + userid,
         LISTPRODUCTID: String(listProsID),
+        TIME_DEPART: timeDepart,
         TOTAL_VND: total_vnd,
         TOTAL_USD: total_usd,
         IS_ACTIVE: true,
